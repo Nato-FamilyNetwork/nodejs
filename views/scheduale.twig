@@ -1,0 +1,67 @@
+{% extends 'layout.twig' %}
+{% block user %}
+{% if user %}
+Connected as : {{user.username}}
+{% endif %}
+{% endblock %}
+{% block content %}
+<h1>{{ title}}</h1>
+ 
+{%for e,m in schedual %}
+
+                            <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable" style="width: 100%;">
+										<div class="widget-box widget-color-blue" style="background-color:#438EB9;">
+											<!-- #section:custom/widget-box.options -->
+											<div class="widget-header">
+												<h5 class="widget-title bigger lighter">
+													<i class="ace-icon fa fa-table"></i>
+													{{m.Chaine.nom}}
+												</h5>
+
+												 
+											</div>
+
+											<!-- /section:custom/widget-box.options -->
+											<div class="widget-body">
+												<div class="widget-main no-padding">
+													<table class="table table-striped table-bordered table-hover">
+														<thead class="thin-border-bottom">
+															<tr>
+																<th>
+ 																	<center>Time</center>
+																</th>
+
+																<th>
+                                                                    <center>
+                                                                        Program
+																	</center>
+																	
+																</th>
+ 															</tr>
+														</thead>
+
+														<tbody>
+                                                        {%for e1,m1 in m.program %}
+
+                                                           {%for e11,m11 in m1 %}
+
+															<tr>
+																<td class="">{{m11.heur}}</td>
+
+																<td>
+																	<a href="#">{{m11.contenue}}</a>
+																</td>
+
+																 
+															</tr>
+                                                             {% endfor %}
+                                                            {% endfor %}
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+ {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar{border-radius: 0;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+<div class="content">
+<center><img src="/images/family.png" alt="family network" width="90px" /> <br/> <h3>Family Network </h3> <br/> <br/>  </center>
+{% if info %}
+<div class="alert alert-danger" role="alert"><strong>{{info}} </strong></div>
+{% else %}
+<div></div>
+{% endif %}
+<form class="form-horizontal" method="post" action="">
+  <div class="form-group">
+    <label for="inputUsername" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" name="username" class="form-control" id="inputUsername" placeholder="Your email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputName" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" name="name" class="form-control" id="inputName" placeholder="Name">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputFName" class="col-sm-2 control-label">Family Name</label>
+    <div class="col-sm-10">
+      <input type="text" name="familyname" class="form-control" id="inputFName" placeholder="Family Name">
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+    <label for="inputDate" class="col-sm-2 control-label">Birth date</label>
+    <div class="col-sm-10">
+      <input type="date" name="birth" class="form-control" id="inputDate" placeholder="Birthdate">
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Interests</label>
+    <div class="col-sm-10">
+      <select name="interest"> 
+	  <option value="Alimentaire"> Alimentaire</option>
+	  <option value="Hygiene">Hygiene</option>
+	  <option value="High tech">High tech</option>
+	  </select>
+    </div>
+  </div>
+  
+  <div class="form-group">
+     <label class="col-sm-2 control-label">Favourite news paper</label>
+    <div class="col-sm-10">
+      <select name="news"> 
+	  <option value="chourouk"> Al Chourouk</option>
+	  <option value="tounsya">Ettounsia</option>
+	  
+	  </select>
+    </div>
+  </div>
+  
+ 
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </div>
+</form>
+</div>
+</div>
+</body>
+
+</html>

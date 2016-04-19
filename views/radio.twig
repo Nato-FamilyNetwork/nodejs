@@ -1,0 +1,38 @@
+{% extends 'layout.twig' %}
+{% block user %}
+{% if user %}
+Connected as : {{user.username}}
+{% endif %}
+{% endblock %}
+{% block content %}
+<br/>
+<br/>
+<div class = "col-md-4">
+    <video controls poster="./assets/images/mosalive.png">
+    <source src="http://radio.mosaiquefm.net:8000/mosalive">
+        </source>
+    </video>
+
+</div>
+
+
+
+
+<div class = "col-md-4">
+    <video controls poster="./assets/images/ifm2.png">
+    <source src="http://5.135.138.182:8000/direct">
+        </source>
+    </video>
+
+</div>
+
+
+
+<div class = "col-md-4">
+    <video controls poster="./assets/images/jfm2.jpg">
+    <source src="http://streaming2.toutech.net:8000/jawharafm">
+        </source>
+    </video>
+
+</div>
+{% endblock %}

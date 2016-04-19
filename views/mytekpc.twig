@@ -1,0 +1,51 @@
+{% extends 'layout.twig' %}
+{% block user %}
+{% if user %}
+Connected as : {{user.username}}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<h1>{{ title}}</h1>
+<table border="2">
+   
+      <thead>
+        <tr>
+    <th>ID</th>
+    <th>PC</th>
+    <th>Marque</th>
+    <th>Lien</th>
+    <th>Photo</th>
+    <th>Prix</th>
+    <th>Processeur</th>
+  <th>Ram</th>
+   
+
+        
+        </tr>
+        
+        
+    </thead>
+{%for e,m in mytekpcs %}
+    
+   
+    <tbody>
+    <tr> 
+    <td> {{e}}</td>
+    <td> {{m.PC}}</td>
+    <td> {{m.marque}}</td>
+        <td> <a>{{m.lien}}</a></td>
+        <td> <a>{{m.photo}}</a></td>
+        <td> {{m.prix}}</td>
+        <td> {{m.processeur}}</td>
+       <td> {{m.ram}}</td>
+        
+        
+   
+</tr>
+        </tbody>
+    {%endfor%}
+    
+
+</table>
+{% endblock %}

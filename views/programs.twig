@@ -1,0 +1,14 @@
+{% block user %}
+{% if user %}
+Connected as : {{user.username}}
+{% endif %}
+{% endblock %}
+{% extends 'layout.twig' %}
+{% block content %}
+<center>
+<div>
+    <br/>
+    <img ng-src="./assets/images/tvschedule.jpg" width="770" alt="talvza plz" />
+</div>
+    </center>
+	{% endblock %}

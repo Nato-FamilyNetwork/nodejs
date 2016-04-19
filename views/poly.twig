@@ -1,0 +1,108 @@
+{% block user %}
+{% if user %}
+Connected as : {{user.username}}
+{% endif %}
+{% endblock %}
+{% extends 'layout.twig' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
+
+
+</head>
+
+<body>
+<div id="googleMap" style="width:1300px;height:400px;"></div>
+<div id="chemin"></div>
+     
+{% for e in coor %}
+   
+    <input class="attitude" type="text" value="{{e.attitude}}" hidden="true"/>
+    <input class="longitude" type="text" value="{{e.longitude}}" hidden="true"/>
+    <input class="date" type="text" value="{{e.date}}" hidden="true"/>
+    
+   {% endfor %}
+   
+    <script>
+    var t= new Array ;
+        var c= new Array ;
+        var b= new Array ;
+var att = document.getElementsByClassName("attitude");
+var lon = document.getElementsByClassName("longitude");
+var d = document.getElementsByClassName("date");
+var i;
+    
+for (i = 0; i < att.length; i++) {
+    t.push(new google.maps.LatLng(att[i].value,lon[i].value));
+    b.push(d[i].value);
+
+var geocoder;
+geocoder = new google.maps.Geocoder();
+var latlng = new google.maps.LatLng(att[i].value, lon[i].value);
+
+geocoder.geocode(
+    {'latLng': latlng}, 
+    function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    var add= results[0].formatted_address ;
+                    var  value=add.split(",");
+
+                    count=value.length;
+                    country=value[count-1];
+                    state=value[count-2];
+                    city=value[count-3];
+                    c.push(state);
+                    
+                    /*alert("city name is: " + state);*/
+                }
+                else  {
+                    alert("address not found");
+                }
+        }
+         else {
+            alert("Geocoder failed due to: " + status);
+        }
+        var total = new Array;
+        for (i = 0; i < c.length; i++) {
+            total.push(c[i]+' '+b[i]+'</br>');
+        }
+        document.getElementById("chemin").innerHTML =  total.join("");;
+    }
+);
+    
+}    
+        
+var x=new google.maps.LatLng(34.7406,10.7603);
+    
+
+function initialize()
+{
+var mapProp = {
+  center:x,
+  zoom:6,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+
+var flightPath=new google.maps.Polyline({
+  path:t,
+  strokeColor:"#0000FF",
+  strokeOpacity:0.8,
+  strokeWeight:5
+  });
+
+flightPath.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</body>
+</html>
+{% endblock %}

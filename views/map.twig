@@ -1,0 +1,87 @@
+{% extends 'layout.twig' %}
+{% block user %}
+{% if user %}
+Connected as : {{user.username}}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>navigator</title>
+    </head>
+    <script src="/javascripts/jquery.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script>
+    x= navigator.geolocation;
+        var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+var h = today.getHours();
+var m = today.getMinutes();
+var s = today.getSeconds();
+
+if(dd<10) {
+    dd='0'+dd
+} 
+
+if(mm<10) {
+    mm='0'+mm
+} 
+
+today = 'date : '+mm+'/'+dd+'/'+yyyy+' time : '+h+' h '+m+' m '+s+' s ';
+        console.log(today);
+        x.getCurrentPosition(success, failure);
+        function success(position){
+            var mylat = position.coords.latitude;
+            var mylong = position.coords.longitude;
+            $('#lat').html(mylat);
+            $('#long').html(mylong);
+            document.getElementById("mylat").value = mylat;
+            document.getElementById("mylong").value = mylong;
+            document.getElementById("date").value = today;
+            
+            /*google api ready latitude and longitude*/
+            var coords = new google.maps.LatLng(mylat, mylong);
+            //setting up pir google map
+            var mapOptions ={
+                zoom: 16,
+                center: coords,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            //creating the map
+            var map = new google.maps.Map(document.getElementById("map"),mapOptions);
+            //creating marker
+            var marker = new google.maps.Marker({map: map, position: coords,animation:google.maps.Animation.BOUNCE});
+        }
+        function failure(){
+            $('#lat').html("<p>it didn t work</p>")
+        }
+    </script>
+    <style>
+        #map{
+        width: 1400px;
+            height: 400px;
+            
+        }
+    </style>
+    <body>
+        <!--map placeholder-->
+        <div id="map"></div>
+        <!--langitude and attittude-->
+        <form action="/map/addmap" method="post">
+
+<input id="mylat" name="mylat" type="text" hidden="true"/>
+        <input id="mylong" name="mylong" type="text" hidden="true"/>
+            <input id="date" name="date" type="text" hidden="true"/>
+
+    <input type="submit" value="valider" />
+
+</form>
+       
+            </body>
+</html>
+{% endblock %}

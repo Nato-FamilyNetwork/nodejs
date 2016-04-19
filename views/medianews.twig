@@ -1,0 +1,83 @@
+{% extends 'layout.twig' %}
+{% block user %}
+{% if user %}
+Connected as : {{user.username}}
+{% endif %}
+{% endblock %}
+    
+    {% block content %}
+	
+	
+	<div class="col-sm-6">
+										<div class="widget-box transparent" id="recent-box">
+											<div class="widget-header">
+												<h4 class="widget-title lighter smaller">
+													<i class="ace-icon fa fa-rss orange"></i>Recent news from Ettounsia.tn and Alchourouk.tn
+												</h4>
+
+												
+											</div>
+
+											<div class="widget-body">
+												<div class="widget-main padding-4">
+													<div class="tab-content padding-8">
+														<div id="task-tab" class="tab-pane">
+															<h4 class="smaller lighter green">
+																<i class="ace-icon fa fa-list"></i>
+																Sortable Lists
+															</h4>
+ 
+														</div>
+
+														 
+														<div id="comment-tab" class="tab-pane active">
+															<!-- #section:pages/dashboard.comments -->
+																
+																
+																{% for n in news %}		
+																<div class="itemdiv commentdiv">
+																	<div class="user">
+																		<img height="45px" alt="news" src="{{n.image}}">
+																	</div>
+
+																	<div class="body">
+																		<div class="name">
+																			<a href="{{n.lien}}" target="_blank"> Read more </a>
+																		</div>
+
+																		<div class="time">
+																			<i class="ace-icon fa fa-clock-o"></i>
+																			<span class="green"> {{n.date}} from {{n.source}}</span>
+																		</div>
+
+																		<div class="text">
+																			<i class="ace-icon fa fa-quote-left"></i>
+																			{{n.titre}}
+																			</div>
+																	</div>
+{% endfor %}
+														
+																</div>
+ 
+															</div>
+                                                            </div>
+
+															
+
+															<!-- /section:pages/dashboard.comments -->
+														</div>
+													</div>
+												</div><!-- /.widget-main -->
+											</div><!-- /.widget-body -->
+										
+	
+	
+	
+	
+	
+    
+
+    
+    					
+    {% endblock %}
+

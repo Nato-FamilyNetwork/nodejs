@@ -1,0 +1,56 @@
+{% block user %}
+{% if user %}
+Connected as : {{user.username}}
+{% endif %}
+{% endblock %}
+{% extends 'layout.twig' %}
+{% block test %}
+
+{% for t in twitts %}
+					{{t.user.name}} Twitted : {{t.text}}&nbsp; &nbsp; &nbsp; &nbsp; 
+
+				{% endfor %}  
+{% for t in title %}
+{{t.user.name}} Twitted : {{t.text}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+
+{% endfor %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<h1> Latest news from mosaiquefm </h1>
+
+<div>
+{% for fb in fbs %}
+
+<ul>
+{% for f in fb %}
+<li>
+
+{% if f.message %}
+{{f.message}}  &nbsp; &nbsp; &nbsp; &nbsp;
+{% endif %}
+
+{% if f.created_time %}
+At : {{f.created_time}} &nbsp; &nbsp; &nbsp; &nbsp;
+{% endif %}
+
+
+
+
+{% if f.link %}
+<a href="{{f.link}}" target="_blank" rel="nofollow"   > check it out </a> <br/><br/><br/>
+{% endif %}
+
+
+
+
+</li>
+{% endfor %}
+</ul>
+{% endfor %}
+
+</div>
+{% endblock %}
