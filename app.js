@@ -50,7 +50,15 @@ app.use(function (req, res, next) {
 app.use(session ({
     secret : 'abcd',
     resave: false,
-    saveUninitialized:true
+    saveUninitialized:true,
+    store: new (require('express-sessions'))({
+        storage: 'mongodb',
+        instance: mongoose, // optional 
+        host: 'nato:natoforthewin@ds015919.mlab.com', // optional 
+        port: 15919, // optional  
+        collection: 'sessions', // optional 
+        expire: 86400 // optional 
+    })
     }));
 
 // view engine setup
