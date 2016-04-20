@@ -16,6 +16,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var InstagramStrategy = require('passport-instagram').Strategy;
 var request = require('request');
 
+
 var routes = require('./routes/index');
 //var users = require('./routes/users');
 var mean1 = require('./routes/mean');
@@ -26,7 +27,7 @@ var tablettes = require('./routes/tablettes');
 var tvs = require('./routes/tvs');
 var imprimantes = require('./routes/imprimantes');
 var todo = require('./routes/todo');
-var chat = require('./routes/chat');
+//var chat = require('./routes/chat');
 
 
 
@@ -84,7 +85,7 @@ app.use('/programs', require('./routes/programs'));
 app.use('/calendar', require('./routes/calendar'));
 app.use('/auth', require('./routes/test'));
 app.use('/todo', todo);
-app.use('/chat', chat);
+//app.use('/chat', chat);
 app.use('/schedule', require('./routes/scheduale'));
 app.use('/pcs', pcs);
 app.use('/tablettes', tablettes);
