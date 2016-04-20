@@ -1,4 +1,4 @@
-var express = require('express');
+/*var express = require('express');
 var router = express.Router();
 var http = require('http');
 
@@ -52,4 +52,4 @@ for(var k in users){
 
 });
 
-module.exports = router;
+module.exports = router; */
