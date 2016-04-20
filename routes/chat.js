@@ -1,15 +1,15 @@
-/*var express = require('express');
+var express = require('express');
 var router = express.Router();
-//var http = require('http');
+var http = require('http');
 
 
-var   port = 300;
+var port = process.env.PORT || 300;
 
 var httpServer = http.createServer(function (req, res) {
  
  res.end("hello djiddou");
 });
-//httpServer.listen(process.env.PORT || port);
+httpServer.listen(process.env.PORT || port);
 
 
 
@@ -53,4 +53,3 @@ for(var k in users){
 });
 
 module.exports = router;
-*/
