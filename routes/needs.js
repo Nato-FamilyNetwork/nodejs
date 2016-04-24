@@ -469,7 +469,7 @@ router.get('/', function(req, res, next) {
           allImages.push($(pr).attr().src);
            
            var c = new models.hygiene({photo:"https://www.carrefourtunisie.com/"+allImages[i],prix:Prices[i],source:"carrefoure",titre:Kitba[i]});
-                               c.save();
+                             //  c.save();
       });
   }
     
