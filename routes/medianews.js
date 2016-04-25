@@ -4,22 +4,182 @@ var models =require('../model');
 var pc1 = require('../DataMean/tunisianetPC');
 var http = require('http');
 var fs = require('fs');
+var request = require('request');
+var cheerio = require('cheerio');
 
 router.get('/tounsya', function(req, res, next) {
-	var options = {
-  host: 'localhost',
-  path: '/ressources/tounsya.php'
-};
-    http.request(options).end();
-	var techPC = JSON.parse(fs.readFileSync('/wamp/www/ressources/rsltTounsya.json', "utf-8"));
-	
-	//console.log(techPC);
-	
-	for(var i=0; i< techPC.length; i++){
-		var c = new models.newsTounsya({image:techPC[i].image, titre:techPC[i].titre,lien:techPC[i].lien, date:techPC[i].date, source:"Ettounsia"});
+	 urls="http://www.leconomistemaghrebin.com/category/monde/international/";
+	 
+    request(urls, function (error, response, body) {
+  if (!error) {
+    var $ = cheerio.load(body),
+      i=0,j=0;
+      
+       var allImages=new Array();
+       var Titles=new Array();
+       var Links=new Array();
+       var Dates=new Array();
+      
+         console.log('654564');
+      ($('[class="entry-title"]').children()).each(function (i, allPc) {
+      Titles.push($(allPc).text());
+      });
+      
+      ($('[class="date updated"]').children()).each(function (i, allPc) {
+      Dates.push($(allPc).text());
+      });
+       var allImage=$('[class="attachment-post-thumbnail size-post-thumbnail wp-post-image"]');
+       allImage.each(function (i, allImage) {
+          allImages.push($(allImage).attr().src);
+          
+      });
+ $('[rel="bookmark"]').each(function (i, allImage) {      
+      Links.push($(allImage).attr(). href);
+  });
+      console.log("ok");
+      
+    
+  } else {
+    console.log("We’ve encountered an error: " + error);
+  }
+        for(var cp=0; cp<Links.length;cp++)
+      {
+        var c = new models.newsTounsya({image:allImages[i], titre:Titles[i],lien:Links[i], date:Dates[i], source:"Leconomistemaghrebin"});
 	c.save();
-	}
-	res.json(techPC);
+      }
+});
+	 
+    
+   urls= "http://www.leconomistemaghrebin.com/category/nation/politique/";
+    request(urls, function (error, response, body) {
+  if (!error) {
+    var $ = cheerio.load(body),
+      i=0,j=0;
+      
+       var allImages=new Array();
+       var Titles=new Array();
+       var Links=new Array();
+       var Dates=new Array();
+      
+         console.log('654564');
+      ($('[class="entry-title"]').children()).each(function (i, allPc) {
+      Titles.push($(allPc).text());
+      });
+      
+      ($('[class="date updated"]').children()).each(function (i, allPc) {
+      Dates.push($(allPc).text());
+      });
+       var allImage=$('[class="attachment-post-thumbnail size-post-thumbnail wp-post-image"]');
+       allImage.each(function (i, allImage) {
+          allImages.push($(allImage).attr().src);
+          
+      });
+ $('[rel="bookmark"]').each(function (i, allImage) {      
+      Links.push($(allImage).attr(). href);
+  });
+      console.log("ok");
+      
+    
+  } else {
+    console.log("We’ve encountered an error: " + error);
+  }
+        for(var cp=0; cp<Links.length;cp++)
+      {
+        var c = new models.newsTounsya({image:allImages[i], titre:Titles[i],lien:Links[i], date:Dates[i], source:"Leconomistemaghrebin"});
+	c.save();
+      }
+});
+	 
+    
+     urls= "http://www.leconomistemaghrebin.com/category/nation/regions-nation/";
+    request(urls, function (error, response, body) {
+  if (!error) {
+    var $ = cheerio.load(body),
+      i=0,j=0;
+      
+       var allImages=new Array();
+       var Titles=new Array();
+       var Links=new Array();
+       var Dates=new Array();
+      
+         console.log('654564');
+      ($('[class="entry-title"]').children()).each(function (i, allPc) {
+      Titles.push($(allPc).text());
+      });
+      
+      ($('[class="date updated"]').children()).each(function (i, allPc) {
+      Dates.push($(allPc).text());
+      });
+       var allImage=$('[class="attachment-post-thumbnail size-post-thumbnail wp-post-image"]');
+       allImage.each(function (i, allImage) {
+          allImages.push($(allImage).attr().src);
+          
+      });
+ $('[rel="bookmark"]').each(function (i, allImage) {      
+      Links.push($(allImage).attr(). href);
+  });
+      console.log("ok");
+      
+    
+  } else {
+    console.log("We’ve encountered an error: " + error);
+  }
+        for(var cp=0; cp<Links.length;cp++)
+      {
+        var c = new models.newsTounsya({image:allImages[i], titre:Titles[i],lien:Links[i], date:Dates[i], source:"Leconomistemaghrebin"});
+	c.save();
+      }
+});
+	 
+    
+     urls= "http://www.leconomistemaghrebin.com/category/culture/evenement/";
+    request(urls, function (error, response, body) {
+  if (!error) {
+    var $ = cheerio.load(body),
+      i=0,j=0;
+      
+       var allImages=new Array();
+       var Titles=new Array();
+       var Links=new Array();
+       var Dates=new Array();
+      
+         console.log('654564');
+      ($('[class="entry-title"]').children()).each(function (i, allPc) {
+      Titles.push($(allPc).text());
+      });
+      
+      ($('[class="date updated"]').children()).each(function (i, allPc) {
+      Dates.push($(allPc).text());
+      });
+       var allImage=$('[class="attachment-post-thumbnail size-post-thumbnail wp-post-image"]');
+       allImage.each(function (i, allImage) {
+          allImages.push($(allImage).attr().src);
+          
+      });
+ $('[rel="bookmark"]').each(function (i, allImage) {      
+      Links.push($(allImage).attr(). href);
+  });
+      console.log("ok");
+      
+    
+  } else {
+    console.log("We’ve encountered an error: " + error);
+  }
+        for(var cp=0; cp<Links.length;cp++)
+      {
+        var c = new models.newsTounsya({image:allImages[i], titre:Titles[i],lien:Links[i], date:Dates[i], source:"Leconomistemaghrebin"});
+	c.save();
+      }
+        models.newsTounsya.find({}).exec(function(err,tunisnews)
+    {
+    if(err) res.send('Error');
+    res.send(tunisnews);    
+    });
+});
+	
+    
+    
+    
 });
 
 
@@ -35,8 +195,8 @@ http.request(options).end();
 var techPC = JSON.parse(fs.readFileSync('/wamp/www/ressources/rsltChourouk.json', "utf-8"));
 //console.log(techPC);
 for(var i=0; i< techPC.length; i++){
-var c = new models.newsTounsya({image:techPC[i].image, titre:techPC[i].titre,lien:techPC[i].lien, date:techPC[i].date, source:"Chourouk"});
-c.save();
+//var c = new models.newsTounsya({image:techPC[i].image, titre:techPC[i].titre,lien:techPC[i].lien, date:techPC[i].date, source:"Chourouk"});
+//c.save();
 }
 	
 		
