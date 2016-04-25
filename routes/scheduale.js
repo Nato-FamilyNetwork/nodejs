@@ -40,7 +40,7 @@ router.get('/nessma', function(req, res, next) {
 		
 		c.chaine = "nesma";
 		
-		c.save();
+		//c.save();
       }
       
       console.log("ok");
@@ -95,7 +95,7 @@ router.get('/hannibal', function(req, res, next) {
 		
 		c.chaine = "hannibal";
 		
-		c.save();
+	//	c.save();
       }
       
       console.log("ok");
@@ -143,7 +143,7 @@ router.get('/wataniya1', function(req, res, next) {
 		
 		c.chaine = "wataniya1";
 		
-		c.save();
+	//	c.save();
       }
       
       console.log("ok");
@@ -200,7 +200,7 @@ router.get('/wataniya2', function(req, res, next) {
 		
 		c.chaine = "wataniya2";
 		
-		c.save();
+	//	c.save();
       }
       
       console.log("ok");
@@ -222,12 +222,5 @@ router.get('/wataniya2', function(req, res, next) {
 
 
     });
-
-
-
-
-
- 
-
 
 module.exports = router;
