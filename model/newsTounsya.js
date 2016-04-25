@@ -7,7 +7,8 @@ var newsSchema = new Schema({
     titre: String,
     lien: String,
     date: String,
-	source : String
+    source : String,
+    category: String
     
     
     
