@@ -4,11 +4,12 @@ var schedualSchema = new Schema({
     
     
     chaine: String,
-    program : [{contenue: String, heur: String}]
+    program : {contenue: String, heur: String}
 	
 });
 
 module.exports = mongoose.model('schedual',schedualSchema);
+
 
 
 
