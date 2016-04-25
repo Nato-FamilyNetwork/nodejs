@@ -3,46 +3,60 @@ var router = express.Router();
     var fs = require('fs');
 var http = require('http');
 var models= require('../model');
-
+var request = require('request');
+var cheerio = require('cheerio');
 //var models =require('../model');
 
 
 
 router.get('/', function(req, res, next) {
-    var http = require('http');
-var options = {
-  host: 'localhost',
-  path: '/ressources/tvSched.php'
-};
-    http.request(options).end();
-
-var schedual = JSON.parse(fs.readFileSync('/wamp/www/ressources/schedual.json', "utf-8"));
-
-
-for(var i=0; i< schedual.length; i++){
+    urls="http://www.nessma.tv/fr/grille";
+	 
+    request(urls, function (error, response, body) {
+  if (!error) {
+    var $ = cheerio.load(body),
+      i=0,j=0;
+      var json = { pc : "", marque : "", diskDure : "", processeur : "", ecrant : "", ram : "", cartGraphique : "",image:""};
+       var times=new Array();
+       var pgm=new Array();
+       var Links=new Array();
+       var Dates=new Array();
+      
+       
+      ($('[class="tab-pane active "]').children()).each(function (i, allPc) {
+            var xx=($(allPc,'[class="col-md-5"]').children().each(function(i,a)   {
+                    var tt=($(a,'[class="col-md-2"]').children().each(function(i,a)   {
+                      if(i==0)times.push($(a).text());
+                      if(i==1)pgm.push($(a).text());
+                    }));
+            }));
+       
+      });
+    /*
+      for(var kk=0; kk<times.length;kk++){
+          var c = new models.schedual();
+		c.program.contenue=(pgm[kk]);
+		c.program.heur=(times[kk]);
 		
-		for(var j=0; j<schedual[i].program.length; j++){
-		var c = new models.schedual();
-		c.program.push(schedual[i].program[j]);
-		
-		c.chaine = schedual[i].chaine.nom;
+		c.chaine = "nesma";
 		
 		c.save();
-		
-		}
-	
-	}
+      }
+      */
+      console.log("ok");
+      
+    
+  } else {
+    console.log("We’ve encountered an error: " + error);
+  }
+});
 
-
-  
-    var now = new Date();
-var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0, 0, 0) - now;
-if (millisTill10 < 0) {
-     millisTill10 += 86400000; // it's after 10am, try 10am tomorrow.
-}
-setTimeout(function(){alert("It's 10am!")}, millisTill10);
-    // res.render('scheduale.twig', { title: 'Tv Channels Schedual  ',schedual:schedual });
-	 res.send(schedual);
+ models.schedual.find({}).exec(function(err,tunisianetpc){
+    if(err) res.send('Error');
+    res.send(tunisianetpc);
+    //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
+    
+});
     });
 
 
