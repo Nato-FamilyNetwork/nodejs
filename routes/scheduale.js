@@ -49,6 +49,12 @@ router.get('/nessma', function(req, res, next) {
   } else {
     console.log("We’ve encountered an error: " + error);
   }
+  models.schedual.find({}).exec(function(err,tunisianetpc){
+    if(err) res.send('Error');
+    res.send(tunisianetpc);
+    //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
+    
+});
 });
 });
 
@@ -98,6 +104,12 @@ router.get('/hannibal', function(req, res, next) {
   } else {
     console.log("We’ve encountered an error: " + error);
   }
+  models.hannibal.find({}).exec(function(err,tunisianetpc){
+    if(err) res.send('Error');
+    res.send(tunisianetpc);
+    //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
+    
+});
 });
 });
 router.get('/wataniya1', function(req, res, next) {
@@ -140,6 +152,15 @@ router.get('/wataniya1', function(req, res, next) {
   } else {
     console.log("We’ve encountered an error: " + error);
   }
+  
+  models.watanya1.find({}).exec(function(err,tunisianetpc){
+    if(err) res.send('Error');
+    res.send(tunisianetpc);
+    //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
+    
+});
+  
+  
 });
 });
 
