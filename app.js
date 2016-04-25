@@ -15,6 +15,8 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var InstagramStrategy = require('passport-instagram').Strategy;
 var request = require('request');
+var socket_io = require('socket.io');
+
 
 
 var routes = require('./routes/index');
@@ -27,7 +29,7 @@ var tablettes = require('./routes/tablettes');
 var tvs = require('./routes/tvs');
 var imprimantes = require('./routes/imprimantes');
 var todo = require('./routes/todo');
-//var chat = require('./routes/chat');
+
 
 
 
@@ -76,6 +78,10 @@ app.use(flash());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+var io = socket_io();
+app.io = io;
+
 app.use('/', routes);
 //app.use('/users', users);
 app.use('/mean', mean1);
@@ -93,7 +99,7 @@ app.use('/programs', require('./routes/programs'));
 app.use('/calendar', require('./routes/calendar'));
 app.use('/auth', require('./routes/test'));
 app.use('/todo', todo);
-//app.use('/chat', chat);
+app.use('/chat', require('./routes/chat')(io));
 app.use('/schedule', require('./routes/scheduale'));
 app.use('/pcs', pcs);
 app.use('/tablettes', tablettes);
