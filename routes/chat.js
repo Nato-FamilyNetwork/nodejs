@@ -1,19 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var http = require('http');
 
+module.exports = function(io) {
 
-var port = process.env.PORT || 300;
-
-var httpServer = http.createServer(function (req, res) {
- 
- res.end("hello djiddou");
-});
-httpServer.listen(process.env.PORT || port);
+ var express = require('express');
+ var router = express.Router();
 
 
 
-var io = require('socket.io').listen(httpServer);
 
 var users ={};
 io.sockets.on('connection', function (socket) {
@@ -52,4 +44,5 @@ for(var k in users){
 
 });
 
-module.exports = router;
+ return router;
+};
