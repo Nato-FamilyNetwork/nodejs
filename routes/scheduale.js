@@ -9,7 +9,7 @@ var cheerio = require('cheerio');
 
 
 
-router.get('/', function(req, res, next) {
+router.get('/nessma', function(req, res, next) {
     urls="http://tunisie14.tn/media/television-tunisienne/nessma-tv";
 	 
     request(urls, function (error, response, body) {
@@ -50,7 +50,15 @@ router.get('/', function(req, res, next) {
     console.log("We’ve encountered an error: " + error);
   }
 });
-    
+});
+
+
+
+
+
+
+
+router.get('/hannibal', function(req, res, next) {
     urls="http://tunisie14.tn/media/television-tunisienne/hannibal-tv";
 	 
     request(urls, function (error, response, body) {
@@ -91,7 +99,8 @@ router.get('/', function(req, res, next) {
     console.log("We’ve encountered an error: " + error);
   }
 });
-  
+});
+router.get('/wataniya1', function(req, res, next) {
      urls="http://tunisie14.tn/media/television-tunisienne/wataniya-1";
 	 
     request(urls, function (error, response, body) {
@@ -120,7 +129,7 @@ router.get('/', function(req, res, next) {
 		c.program.contenue=(pgm[kk]);
 		c.program.heur=(times[kk]);
 		
-		c.chaine = "watanya1";
+		c.chaine = "wataniya1";
 		
 		c.save();
       }
@@ -132,7 +141,14 @@ router.get('/', function(req, res, next) {
     console.log("We’ve encountered an error: " + error);
   }
 });
+});
 
+
+
+
+
+
+router.get('/wataniya2', function(req, res, next) {
     urls="http://tunisie14.tn/media/television-tunisienne/wataniya-2";
 	 
     request(urls, function (error, response, body) {
@@ -161,7 +177,7 @@ router.get('/', function(req, res, next) {
 		c.program.contenue=(pgm[kk]);
 		c.program.heur=(times[kk]);
 		
-		c.chaine = "watanya1";
+		c.chaine = "wataniya2";
 		
 		c.save();
       }
@@ -172,45 +188,25 @@ router.get('/', function(req, res, next) {
   } else {
     console.log("We’ve encountered an error: " + error);
   }
-});
-    
- models.schedual.find({}).exec(function(err,tunisianetpc){
+        
+        
+        models.watanya2.find({}).exec(function(err,tunisianetpc){
     if(err) res.send('Error');
     res.send(tunisianetpc);
     //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
     
 });
+        
+});
+
+
     });
 
 
-	
-	
-	
-	
-	
-	
 
-router.post('/:nom', function(req, res, next) {
-    
-	models.schedual.find({"program.contenue":{$regex: ".*"+req.params.nom+".*",$options:"i"}}).exec(function(err,ts){
-		if(err) res.send("Error");
-		res.json(ts)
-		
-		
-		
-	});
-    });
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+ 
+
+
 module.exports = router;
