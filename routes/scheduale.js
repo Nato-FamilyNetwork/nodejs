@@ -10,7 +10,7 @@ var cheerio = require('cheerio');
 
 
 router.get('/', function(req, res, next) {
-    urls="http://www.nessma.tv/fr/grille";
+    urls="http://tunisie14.tn/media/television-tunisienne/nessma-tv";
 	 
     request(urls, function (error, response, body) {
   if (!error) {
@@ -23,16 +23,16 @@ router.get('/', function(req, res, next) {
        var Dates=new Array();
       
        
-      ($('[class="tab-pane active "]').children()).each(function (i, allPc) {
-            var xx=($(allPc,'[class="col-md-5"]').children().each(function(i,a)   {
-                    var tt=($(a,'[class="col-md-2"]').children().each(function(i,a)   {
-                      if(i==0)times.push($(a).text());
-                      if(i==1)pgm.push($(a).text());
-                    }));
-            }));
+       ($('[class="heure"]')).each(function (i, allPc) {
+             times.push($(allPc).text());
        
       });
-    /*
+      ($('[class="contenu"]')).each(function (i, allPc) {
+             pgm.push($(allPc).text());
+       
+      });
+      
+    
       for(var kk=0; kk<times.length;kk++){
           var c = new models.schedual();
 		c.program.contenue=(pgm[kk]);
@@ -42,7 +42,89 @@ router.get('/', function(req, res, next) {
 		
 		c.save();
       }
-      */
+      
+      console.log("ok");
+      
+    
+  } else {
+    console.log("We’ve encountered an error: " + error);
+  }
+});
+    
+    urls="http://tunisie14.tn/media/television-tunisienne/hannibal-tv";
+	 
+    request(urls, function (error, response, body) {
+  if (!error) {
+    var $ = cheerio.load(body),
+      i=0,j=0;
+      var json = { pc : "", marque : "", diskDure : "", processeur : "", ecrant : "", ram : "", cartGraphique : "",image:""};
+       var times=new Array();
+       var pgm=new Array();
+       var Links=new Array();
+       var Dates=new Array();
+      
+       
+       ($('[class="heure"]')).each(function (i, allPc) {
+             times.push($(allPc).text());
+       
+      });
+      ($('[class="contenu"]')).each(function (i, allPc) {
+             pgm.push($(allPc).text());
+       
+      });
+      
+    
+      for(var kk=0; kk<times.length;kk++){
+          var c = new models.schedual();
+		c.program.contenue=(pgm[kk]);
+		c.program.heur=(times[kk]);
+		
+		c.chaine = "hannibal";
+		
+		c.save();
+      }
+      
+      console.log("ok");
+      
+    
+  } else {
+    console.log("We’ve encountered an error: " + error);
+  }
+});
+  
+     urls="http://tunisie14.tn/media/television-tunisienne/wataniya-1";
+	 
+    request(urls, function (error, response, body) {
+  if (!error) {
+    var $ = cheerio.load(body),
+      i=0,j=0;
+      var json = { pc : "", marque : "", diskDure : "", processeur : "", ecrant : "", ram : "", cartGraphique : "",image:""};
+       var times=new Array();
+       var pgm=new Array();
+       var Links=new Array();
+       var Dates=new Array();
+      
+       
+       ($('[class="heure"]')).each(function (i, allPc) {
+             times.push($(allPc).text());
+       
+      });
+      ($('[class="contenu"]')).each(function (i, allPc) {
+             pgm.push($(allPc).text());
+       
+      });
+      
+    
+      for(var kk=0; kk<times.length;kk++){
+          var c = new models.schedual();
+		c.program.contenue=(pgm[kk]);
+		c.program.heur=(times[kk]);
+		
+		c.chaine = "watanya1";
+		
+		c.save();
+      }
+      
       console.log("ok");
       
     
@@ -51,6 +133,47 @@ router.get('/', function(req, res, next) {
   }
 });
 
+    urls="http://tunisie14.tn/media/television-tunisienne/wataniya-2";
+	 
+    request(urls, function (error, response, body) {
+  if (!error) {
+    var $ = cheerio.load(body),
+      i=0,j=0;
+      var json = { pc : "", marque : "", diskDure : "", processeur : "", ecrant : "", ram : "", cartGraphique : "",image:""};
+       var times=new Array();
+       var pgm=new Array();
+       var Links=new Array();
+       var Dates=new Array();
+      
+       
+       ($('[class="heure"]')).each(function (i, allPc) {
+             times.push($(allPc).text());
+       
+      });
+      ($('[class="contenu"]')).each(function (i, allPc) {
+             pgm.push($(allPc).text());
+       
+      });
+      
+    
+      for(var kk=0; kk<times.length;kk++){
+          var c = new models.schedual();
+		c.program.contenue=(pgm[kk]);
+		c.program.heur=(times[kk]);
+		
+		c.chaine = "watanya1";
+		
+		c.save();
+      }
+      
+      console.log("ok");
+      
+    
+  } else {
+    console.log("We’ve encountered an error: " + error);
+  }
+});
+    
  models.schedual.find({}).exec(function(err,tunisianetpc){
     if(err) res.send('Error');
     res.send(tunisianetpc);
