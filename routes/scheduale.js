@@ -75,7 +75,7 @@ router.get('/', function(req, res, next) {
       
     
       for(var kk=0; kk<times.length;kk++){
-          var c = new models.schedual();
+          var c = new models.hannibal();
 		c.program.contenue=(pgm[kk]);
 		c.program.heur=(times[kk]);
 		
@@ -116,7 +116,7 @@ router.get('/', function(req, res, next) {
       
     
       for(var kk=0; kk<times.length;kk++){
-          var c = new models.schedual();
+          var c = new models.watanya1();
 		c.program.contenue=(pgm[kk]);
 		c.program.heur=(times[kk]);
 		
@@ -157,7 +157,7 @@ router.get('/', function(req, res, next) {
       
     
       for(var kk=0; kk<times.length;kk++){
-          var c = new models.schedual();
+          var c = new models.watanya2();
 		c.program.contenue=(pgm[kk]);
 		c.program.heur=(times[kk]);
 		
