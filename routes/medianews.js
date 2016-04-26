@@ -167,7 +167,7 @@ router.get('/tounsya', function(req, res, next) {
   }
         for(var cp=0; cp<Links.length;cp++)
       {
-        var c = new models.newsTounsya({image:allImages[cp], titre:Titles[cp],lien:Links[cp], date:Dates[cp],category:"events" source:"Leconomistemaghrebin"});
+        var c = new models.newsTounsya({image:allImages[cp], titre:Titles[cp],lien:Links[cp], date:Dates[cp],category:"events", source:"Leconomistemaghrebin"});
 	c.save();
       }
         
