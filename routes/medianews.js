@@ -8,7 +8,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 router.get('/tounsya', function(req, res, next) {
-	 urls="http://www.leconomistemaghrebin.com/category/monde/international/";
+/*	 urls="http://www.leconomistemaghrebin.com/category/monde/international/";
 	 
     request(urls, function (error, response, body) {
   if (!error) {
@@ -130,7 +130,7 @@ router.get('/tounsya', function(req, res, next) {
 	c.save();
       }
 });
-	 
+	*/ 
     
      urls= "http://www.leconomistemaghrebin.com/category/culture/evenement/";
     request(urls, function (error, response, body) {
@@ -167,7 +167,7 @@ router.get('/tounsya', function(req, res, next) {
   }
         for(var cp=0; cp<Links.length;cp++)
       {
-        var c = new models.newsTounsya({image:allImages[i], titre:Titles[i],lien:Links[i], date:Dates[i], source:"Leconomistemaghrebin"});
+        var c = new models.newsTounsya({image:allImages[cp], titre:Titles[cp],lien:Links[cp], date:Dates[cp], source:"Leconomistemaghrebin"});
 	c.save();
       }
         
