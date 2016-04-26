@@ -1,3 +1,4 @@
+module.exports = function(io) {
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
@@ -45,14 +46,19 @@ router.get('/all', function(req, res) {
 	});
 });
 
+io.sockets.on('connection', function (socket) {
+
 router.put('/add/:id/:fid', function(req, res, next) {
     Account.findByIdAndUpdate(req.params.id, {$set: {familyid: req.params.fid}}, {new: true}, function(err, category){
         if(err){
             res.send({error: err});
         }else{
             res.send(category);
+             io.emit('notification', {id: req.params.id, text: 'On vous à ajouter à une famille ', date: new Date()});
         }
     });
+});
+
 });
 
 router.get('/logout', function(req, res){
@@ -61,4 +67,5 @@ router.get('/logout', function(req, res){
   res.send(200);
 });
 
-module.exports = router;
+return router;
+};
