@@ -171,13 +171,15 @@ router.get('/tounsya', function(req, res, next) {
 	c.save();
       }
         
-});
-	
-    models.newsTounsya.find({}).exec(function(err,tunisnews)
+        
+        models.newsTounsya.find({}).exec(function(err,tunisnews)
     {
     if(err) res.send('Error');
     res.send(tunisnews);    
     });
+});
+	
+    
     
     
 });
