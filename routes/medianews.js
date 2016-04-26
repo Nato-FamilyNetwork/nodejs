@@ -45,7 +45,7 @@ router.get('/tounsya', function(req, res, next) {
         for(var cp=0; cp<Links.length;cp++)
       {
         var c = new models.newsTounsya({image:allImages[i], titre:Titles[i],lien:Links[i], date:Dates[i],category:"monde" ,source:"Leconomistemaghrebin"});
-	//c.save();
+	c.save();
       }
 });
 	 
@@ -86,7 +86,7 @@ router.get('/tounsya', function(req, res, next) {
         for(var cp=0; cp<Links.length;cp++)
       {
         var c = new models.newsTounsya({image:allImages[i], titre:Titles[i],lien:Links[i], date:Dates[i],category:"politics" , source:"Leconomistemaghrebin"});
-//	c.save();
+	c.save();
       }
 });
 	 
@@ -127,7 +127,7 @@ router.get('/tounsya', function(req, res, next) {
         for(var cp=0; cp<Links.length;cp++)
       {
         var c = new models.newsTounsya({image:allImages[i], titre:Titles[i],lien:Links[i], date:Dates[i],category:"region" , source:"Leconomistemaghrebin"});
-//	c.save();
+	c.save();
       }
 });
 	 
@@ -168,7 +168,7 @@ router.get('/tounsya', function(req, res, next) {
         for(var cp=0; cp<Links.length;cp++)
       {
         var c = new models.newsTounsya({image:allImages[i], titre:Titles[i],lien:Links[i], date:Dates[i],category:"events" , source:"Leconomistemaghrebin"});
-//	c.save();
+	c.save();
       }
         models.newsTounsya.find({}).exec(function(err,tunisnews)
     {
