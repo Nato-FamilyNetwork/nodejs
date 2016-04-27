@@ -4,7 +4,7 @@ var calendar = mongoose.Schema ({
 title: String,
 start: String,
 end: String,
-className: String
-/*userFK:{type: mongoose.Schema.Types.ObjectId , ref: 'user'}*/
+className: String,
+familyFK:String,
 });
 module.exports = mongoose.model ( 'calendar' , calendar );
