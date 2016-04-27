@@ -20,7 +20,7 @@ router.get('/tounsya', function(req, res, next) {
        var Links=new Array();
        var Dates=new Array();
       
-         console.log('654564');
+        
       ($('[class="entry-title"]').children()).each(function (i, allPc) {
       Titles.push($(allPc).text());
       });
@@ -61,7 +61,7 @@ router.get('/tounsya', function(req, res, next) {
        var Links=new Array();
        var Dates=new Array();
       
-         console.log('654564');
+         
       ($('[class="entry-title"]').children()).each(function (i, allPc) {
       Titles.push($(allPc).text());
       });
@@ -102,7 +102,7 @@ router.get('/tounsya', function(req, res, next) {
        var Links=new Array();
        var Dates=new Array();
       
-         console.log('654564');
+         
       ($('[class="entry-title"]').children()).each(function (i, allPc) {
       Titles.push($(allPc).text());
       });
@@ -143,7 +143,7 @@ router.get('/tounsya', function(req, res, next) {
        var Links=new Array();
        var Dates=new Array();
       
-         console.log('654564');
+       
       ($('[class="entry-title"]').children()).each(function (i, allPc) {
       Titles.push($(allPc).text());
       });
