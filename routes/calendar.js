@@ -12,14 +12,20 @@ router.get('/', function(req, res, next) {
            });
 });
 /*getbyid ok*/
-router.get('/:id', function(req, res, next) {
-    models.calendar.findById(req.params.id, function(err, p){
+router.get('/:familyId', function(req, res, next) {
+    /*models.calendar.find(req.params.familyId, function(err, p){
         if(err){
             res.json({error: err});
         }else{
             res.json(p);
         }
-    });
+    });*/
+    var coor = models.calendar.find({familyFK: req.params.familyId}).exec(function(err,coor){
+                       if(err) res.json({error:err});
+                    
+/*res.render('poly.twig',{coor:coor , user:req.user}); */ 
+     res.json(coor);
+           });
 });
 /*update ok*/
 router.put('/:id', function(req, res, next) {
@@ -67,7 +73,7 @@ router.delete('/:id', function(req, res, next) {
 
 /*add ok*/
 router.post('/addEvent', function(req, res, next) {
-  var c = new models.calendar({title:req.body.title,start:req.body.start,end:req.body.end,className:req.body.className});
+  var c = new models.calendar({title:req.body.title,start:req.body.start,end:req.body.end,className:req.body.className,familyFK:req.body.familyFK});
     c.save(function(err,c){
     if(err) req.json({error:err});
         res.json(c);
