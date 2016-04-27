@@ -3,8 +3,14 @@ var Schema = mongoose.Schema;
 var teamShema = new Schema({
     
     
-     Team: String,
-    Link: String,
+     League: String,     
+    Teams: [{
+    name:String,
+    points:String,
+    gp:String,
+    goalDiffrence:String,
+        link:String
+    }]
      
     
 });
