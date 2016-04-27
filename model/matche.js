@@ -2,7 +2,8 @@ var mongoose = require('../config/db');
 var Schema = mongoose.Schema;
 var matcheShema = new Schema({
     
-    
+    team:String,
+    matches: [{
     GameResult:String,
     GameAwayImage:String,
     GameAwayTeam:String,
@@ -10,7 +11,7 @@ var matcheShema = new Schema({
     GameHomeTeam:String,
     Competiton:String,
     GameDate:String,
-    
+    }]
      
     
 });
