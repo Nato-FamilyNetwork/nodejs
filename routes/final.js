@@ -101,7 +101,7 @@ client.get('statuses/home_timeline', params, function(error, tweets, response){
 	  
 	  
 router.get('/fbs', function(req, res, next) {  
-FB.setAccessToken('CAACEdEose0cBAIvSfzucHpmgOrZBkHDItXDUZBaDuZAd08gZApfVPvKRZBCjUZA18JNNRvoMGnUzDy15aiW2HEycLyJVAruYIfSLyxBauYgZA0xsTGcE246cfL9An4YJAHfQYXK7NOdIsqHStFIkFMziLLsDe4Yi0SEzGfQbDy7oGUpuZBIMXfXq8QClQuoQztXxmPJbK2sl6wZCgbESvQOuffzcPOKXqwiYZD');
+FB.setAccessToken('CAACEdEose0cBACjvdaZBET4BDuZAjUtWYw3j6ZBkH1dMumrIUOBbRnrwqZCE2h0pGlJLPTIO0f9amSzz5XIl90nnW0XCTMoYlgYLywWwIRZBVgMDWkGhnzD6oF4RoLgl78SP8yAZCFi13E4QCcDEUQTiKx4mnaQccKGyQQ7WqZAlQ5kpq1bGsapQ2Xf5Iu3jAoQYJpGJwAm9AEFVIJEZCGxfZC1EVx5eJI8wZD');
 FB.api(
   '/mosaiquefm/feed',
   'GET',
