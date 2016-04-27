@@ -94,6 +94,7 @@ app.use('/gallery', require('./routes/gallery'));
 app.use('/news', require('./routes/medianews'));
 app.use('/radio', require('./routes/radio'));
 app.use('/map', require('./routes/map'));
+app.use('/sms', require('./routes/sms'));
 app.use('/needs', require('./routes/needs'));
 app.use('/programs', require('./routes/programs'));
 app.use('/calendar', require('./routes/calendar'));
