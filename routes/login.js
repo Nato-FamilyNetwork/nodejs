@@ -47,6 +47,16 @@ router.get('/all', function(req, res) {
 	});
 });
 
+router.get('/all/online', function(req, res) {
+    
+    model.user.find({"online":"true"}).exec(function(err,resu){
+		
+		if(err) res.send(404,err);
+		res.send(resu);
+		
+	});
+});
+
 
 
 
@@ -108,7 +118,7 @@ router.put('/add/:id/:fid', function(req, res, next) {
         }
     });
 });
-
+al
 });
 
 router.get('/logout', function(req, res){
