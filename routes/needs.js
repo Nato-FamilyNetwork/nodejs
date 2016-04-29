@@ -485,4 +485,15 @@ router.get('/', function(req, res, next) {
   
 });
 
+
+router.get('/promote', function(req, res) {
+    
+    model.hygiene.find().limit(-1).skip(parseInt(Math.random()*30)).exec(function(err,resu){
+		
+		if(err) res.send(404,err);
+		res.send(resu);
+		
+	});
+});
+
 module.exports = router;
