@@ -59,6 +59,17 @@ router.get('/my/:param', function(req, res) {
 });
 
 
+router.get('/testing', function(req, res) {
+    
+    model.user.find().limit(-1).skip(parseInt(Math.random()*10)).exec(function(err,resu){
+		
+		if(err) res.send(404,err);
+		res.send(resu);
+		
+	});
+});
+
+
 io.sockets.on('connection', function (socket) {
 
 router.put('/add/:id/:fid', function(req, res, next) {
