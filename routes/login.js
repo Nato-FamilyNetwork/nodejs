@@ -46,6 +46,19 @@ router.get('/all', function(req, res) {
 	});
 });
 
+
+//mahdi
+router.get('/my/:param', function(req, res) {
+    
+    model.user.find({"familyid":req.params.param}).exec(function(err,resu){
+		
+		if(err) res.send(404,err);
+		res.send(resu);
+		
+	});
+});
+
+
 io.sockets.on('connection', function (socket) {
 
 router.put('/add/:id/:fid', function(req, res, next) {
