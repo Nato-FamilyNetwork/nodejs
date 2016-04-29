@@ -34,26 +34,6 @@ router.put('/update/:id/:league/:team', function(req, res, next) {
 });
 
 
-router.put('/online/:id/', function(req, res, next) {
-    Account.findByIdAndUpdate(req.params.id, {$set: {online:"true"}, {new: true}}, function(err, category){
-        if(err){
-            res.send({error: err});
-        }else{
-            res.send(category);
-        }
-    });
-});
-
-router.put('/offline/:id/', function(req, res, next) {
-    Account.findByIdAndUpdate(req.params.id, {$set: {online:"false"}, {new: true}}, function(err, category){
-        if(err){
-            res.send({error: err});
-        }else{
-            res.send(category);
-        }
-    });
-});
-
 
 
 //mahdi
