@@ -47,15 +47,7 @@ router.get('/all', function(req, res) {
 	});
 });
 
-router.get('/all/online', function(req, res) {
-    
-    model.user.find({"online":"true"}).exec(function(err,a){
-		
-		if(err) res.send(404,err);
-		res.send(a);
-		
-	});
-});
+
 
 
 
