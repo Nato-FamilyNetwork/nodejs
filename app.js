@@ -28,6 +28,7 @@ var pcs = require('./routes/pcs');
 var tablettes = require('./routes/tablettes');
 var tvs = require('./routes/tvs');
 var imprimantes = require('./routes/imprimantes');
+var food = require('./routes/foods');
 var todo = require('./routes/todo');
 
 
@@ -99,6 +100,7 @@ app.use('/needs', require('./routes/needs'));
 app.use('/programs', require('./routes/programs'));
 app.use('/calendar', require('./routes/calendar'));
 app.use('/auth', require('./routes/test'));
+app.use('/foods', food);
 app.use('/todo', todo);
 app.use('/chat', require('./routes/chat')(io));
 app.use('/schedule', require('./routes/scheduale'));
