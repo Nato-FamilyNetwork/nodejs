@@ -457,8 +457,7 @@ router.post('/', function(req, res, next) {
     var f = new models.food();
     f.title = req.body.title;
     f.contenue = req.body.contenue;
-    f.userId=req.body.userId;
-    console/log(f.userId);
+   
     //f.message.push(req.body.message[0]);
     
 
