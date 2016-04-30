@@ -27,7 +27,7 @@ for(var k in users){
      me=user;
      users[me.id]=me;
      date = new Date();
-     me.h =date.getHours()+"h";
+     me.h =date.getHours()+1+"h";
      me.m =date.getMinutes()+"min"; 
      io.sockets.emit('newusers',me);
      console.log(me.fid);
