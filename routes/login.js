@@ -109,8 +109,8 @@ router.get('/testing', function(req, res) {
 
 io.sockets.on('connection', function (socket) {
 
-router.put('/add/:id/:fid', function(req, res, next) {
-    Account.findByIdAndUpdate(req.params.id, {$set: {familyid: req.params.fid}}, {new: true}, function(err, category){
+router.put('/add/:id/:fid/:role', function(req, res, next) {
+    Account.findByIdAndUpdate(req.params.id, {$set: {familyid: req.params.fid , role: req.params.role}}, {new: true}, function(err, category){
         if(err){
             res.send({error: err});
         }else{
