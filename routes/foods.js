@@ -26,9 +26,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     var f = new models.food();
-    f.title = req.body.title;
+    f.title = req.body.title; f.mx="hhhhhhhhh"; 
     f.contenue = req.body.contenue;
-    f.userId=req.body.userId; 
+   
     //f.message.push(req.body.message[0]);
     
 
