@@ -22,10 +22,18 @@ request(url, function (error, response, body) {
       var imgs= new Array();
       var prices= new Array();
       var titles= new Array();
+      var marq= new Array();
      
       var json = { pc : "", marque : "", diskDure : "", processeur : "", ecrant : "", ram : "", cartGraphique : "",image:""};
        var allImages=$('[width="150"]');
        var allLinks=$('[class="product_img_link"]');
+       var allmarque=$('[border="0"]');
+      
+      allmarque.each(function (i, allmark) {
+          marq.push($(allmark).attr().title);
+           
+          
+      });
       
       //recuperation de tout les liens
       allLinks.each(function (i, allLink) {
@@ -53,6 +61,7 @@ request(url, function (error, response, body) {
          	lien:links[ff],
           	photo:imgs[ff],
          	prix:prices[ff], 
+         	marque:marq[ff],
          	source:"tunisianet"
          	
          });
