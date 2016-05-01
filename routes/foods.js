@@ -49,7 +49,7 @@ router.put('/:id/:msg/:z', function(req, res, next) {
      var h =date.getHours()+1+"h";
      var m =date.getMinutes()+"min";
      
-    var hh= {"nom":req.params.msg,"users":req.params.z,"dates":h+":"+m};
+    var hh= {"nom":req.params.msg,"users":req.params.z,"dates":h};
      
     
     models.food.find({"title":{$regex: ".*"+req.params.id+".*", $options:"i"}}).exec(function(err,ts){
