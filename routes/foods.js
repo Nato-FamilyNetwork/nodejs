@@ -65,22 +65,15 @@ router.put('/:id/:msg', function(req, res, next) {
      
 });
 
-router.put('/update/:id/:id2/:msg', function(req, res, next) {
-  var x=(message[0]._id);
-  models.food.find({x:req.params.id2},function(err,p)
-  {if(err){
-            res.send({error: err});
-        }else{
-            res.send(p);
-        }
-  });
-   /* models.food.update({_id:req.params.id}, {$set: {"message.3":{vote: req.params.note}}}, {new: true}, function(err, food){
+router.put('/update/:id/:msg', function(req, res, next) {
+   
+    models.food.update({_id:req.params.id}, {$set: {"message.1":{vote: req.params.note}}}, {new: true}, function(err, food){
         if(err){
             res.send({error: err});
         }else{
             res.send(food);
         }
-    });*/
+    });
 });
   
 
