@@ -10,7 +10,7 @@ router.get('/:familyId', function(req, res, next) {
      
     
      
-    models.food.find({"family":req.params.famlilyId}).exec(function(err,team){
+    models.food.find({"family":req.params.familyId}).exec(function(err,team){
     if(err) res.send('Error');
     res.send(team);
     //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
