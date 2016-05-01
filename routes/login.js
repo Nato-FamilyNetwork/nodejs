@@ -115,7 +115,7 @@ router.put('/add/:id/:fid', function(req, res, next) {
             res.send({error: err});
         }else{
             res.send(category);
-             io.emit('notification', {id: req.params.id, text: 'On vous à ajouter à une famille ', date: new Date()});
+             io.emit('notification', {id: req.params.id, text: 'vous venez d\'être ajouté à une famille', date: new Date()});
         }
     });
 });
