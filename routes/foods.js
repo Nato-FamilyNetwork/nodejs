@@ -67,7 +67,7 @@ router.put('/:id/:msg', function(req, res, next) {
 
 router.put('/update/:id/:id2/:note', function(req, res, next) {
    var hh=req.params.id2;
-    models.food.findByIdAndUpdate(req.params.id, {$set: {"message.$"+hh:{vote: req.params.note}}}, function(err, food){
+    models.food.findByIdAndUpdate(req.params.id, {$set: {"message.hh":{vote: req.params.note}}}, function(err, food){
         if(err){
             res.send({error: err});
         }else{
