@@ -28,6 +28,7 @@ router.post('/', function(req, res, next) {
     var f = new models.food();
     f.title = req.body.title; 
     f.mx=req.body.mx; 
+    f.family=req.body.family;
     f.contenue = req.body.contenue;
    
     //f.message.push(req.body.message[0]);
