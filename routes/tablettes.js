@@ -8,24 +8,63 @@ var fs = require('fs');
 router.get('/', function(req, res, next) {
 	
 	
-	
-	
-	
-	
-	
-	
-			
-var options = {
-  host: 'localhost',
-  path: '/ressources/tunisianet-tablette.php'
-};
-    http.request(options).end();
-	var techPC = JSON.parse(fs.readFileSync('/wamp/www/ressources/rsltTunisianetTab.json', "utf-8"));
-	/*
-	for(var i=0; i< techPC.length; i++){
-		var c = new models.tablette({tablette:techPC[i].tablette, lien:techPC[i].lien,photo:techPC[i].photo, prix:techPC[i].prix,PC:techPC[i].PC, source:techPC[i].source, marque:techPC[i].marque});
+	  url = "http://www.tunisianet.com.tn/396-tablette-tactile-tunisie";
+  //tunisianet portable
+    
+request(url, function (error, response, body) {
+  if (!error) {
+    var $ = cheerio.load(body),
+      allPcs = $("[id=\"produit_liste_texte\"]").children(),i=0,j=0;
+      var links= new Array();
+      var imgs= new Array();
+      var prices= new Array();
+      var titles= new Array();
+     
+      var json = { pc : "", marque : "", diskDure : "", processeur : "", ecrant : "", ram : "", cartGraphique : "",image:""};
+       var allImages=$('[width="150"]');
+       var allLinks=$('[class="product_img_link"]');
+      
+      //recuperation de tout les liens
+      allLinks.each(function (i, allLink) {
+          links.push($(allLink).attr().href);
+          titles.push($(allLink).attr().title);
+          
+      });
+      
+      var prix=$('[class="price"]');//tout les prix
+      
+      //recuperation de tout les prix
+      prix.each(function (i, pr) {
+          prices.push($(pr).text());
+          
+      });
+      allImages.each(function (i, allImage) {
+          imgs.push($(allImage).attr().src);
+          
+      });
+      
+      
+      for(var ff=0;ff<images.length;ff++){
+         var c = new models.tablette({
+         	tablette:titles[i], 
+         	lien:links[i],
+         	photo:imgs[i], 
+         	prix:prices[i], 
+         	source:"tunisianet"
+         	
+         });
 	c.save();
-	}*/
+ 
+      }
+     
+       
+    
+  } else {
+    console.log("We’ve encountered an error: " + error);
+  }
+});
+ 
+ 
 
 
 
