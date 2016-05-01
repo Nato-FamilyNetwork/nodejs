@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var models =require('../model');
 var http = require('http');
+
+var request = require('request');
+var cheerio = require('cheerio');
 var fs = require('fs');
 
 
