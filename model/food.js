@@ -4,6 +4,7 @@ var foodShema = new Schema({
     
     title:String,
     mx:String,
+    family:String,
     contenue: String,
     message: [{ nom:String,vote:String}]
     
