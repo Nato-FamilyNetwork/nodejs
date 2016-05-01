@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 var foodShema = new Schema({
     
     title:String,
+    mx:String,
     contenue: String,
-    userId:String,
     message: [{ nom:String,vote:String}]
     
     
