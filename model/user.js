@@ -14,6 +14,7 @@ var users = new Schema({
 	familyid : String,
 	tel: Number,
 	admin : String,
+	role : String,
 	online: String,
 	football : {
 		league : String,
