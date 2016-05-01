@@ -47,7 +47,7 @@ router.post('/', function(req, res, next) {
 router.put('/:id/:msg/:z', function(req, res, next) {
      var date = new Date();
      var h =date.getHours()+1+"h";
-     var m =date.getMinutes()+"min";
+     var m =date.getMinutes()+"m";
      
     var hh= {"nom":req.params.msg,"users":req.params.z,"dates":h+":"+m};
      
