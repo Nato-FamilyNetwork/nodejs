@@ -66,7 +66,8 @@ router.put('/:id/:msg', function(req, res, next) {
 });
 
 router.put('/update/:id/:id2/:msg', function(req, res, next) {
-  models.food.find({"message[0]._id":req.params.id2},function(err,p)
+  var x=(message[0]._id);
+  models.food.find({x:req.params.id2},function(err,p)
   {if(err){
             res.send({error: err});
         }else{
