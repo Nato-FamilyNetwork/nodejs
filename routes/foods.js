@@ -14,8 +14,8 @@ router.put('/update/:id/:id2/:note', function(req, res, next) {
               
             }
           }
-            food.save();
-              res.send(food);
+            food[0].save();
+              //res.send(food);
             
         }
     });
