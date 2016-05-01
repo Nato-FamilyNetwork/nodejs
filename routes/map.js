@@ -12,6 +12,15 @@ router.get('/afficher/:id', function(req, res, next) {
         }
     });
 });
+router.get('/affiche/:family', function(req, res, next) {
+ var coor = models.comment.find({"userFK":req.params.family}, function(err, p){
+        if(err){
+            res.json({error: err});
+        }else{
+            res.json(p);
+        }
+    });
+});
 router.get('/affichermap', function(req, res, next) {
  var hi= 'hello';
                     
