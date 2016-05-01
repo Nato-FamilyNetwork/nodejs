@@ -47,7 +47,7 @@ request(url, function (error, response, body) {
       });
       
       
-      for(var ff=0;ff<imgs.length;ff++){
+      for(var ff=0;ff<prices.length;ff++){
          var c = new models.tablette({
          	tablette:titles[ff], 
          	lien:links[ff],
