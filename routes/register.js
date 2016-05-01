@@ -9,7 +9,7 @@ var Account = require('../model/user');
 });
 
 router.post('/', function(req, res, next) {
-    Account.register(new Account({ username : req.body.username, name : req.body.name, familyname : req.body.familyname, birth : req.body.birth, interest : req.body.interest, newspaper : req.body.news, familyid:req.body.fid }), req.body.password, function(err, account) {
+    Account.register(new Account({ username : req.body.username, name : req.body.name, familyname : req.body.familyname,tel : req.body.tel,admin : req.body.admin, birth : req.body.birth, interest : req.body.interest, newspaper : req.body.news, familyid:req.body.fid }), req.body.password, function(err, account) {
         if (err) {
           //return res.render('register.twig', {info: "Sorry. That username already exists. Try again."});
 		  res.send(401);
