@@ -51,7 +51,7 @@ request(url, function (error, response, body) {
          var c = new models.tablette({
          	tablette:titles[ff], 
          	lien:links[ff],
-          
+          	photo:imgs[ff],
          	prix:prices[ff], 
          	source:"tunisianet"
          	
