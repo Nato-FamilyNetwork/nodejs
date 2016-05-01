@@ -1,5 +1,6 @@
 var mongoose = require ( '../config/db' );
 var map = mongoose.Schema ({
+    role: String,
 attitude: String,
     longitude: String,
     date: String,

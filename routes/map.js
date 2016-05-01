@@ -4,7 +4,7 @@ var models = require('../model');
 
 
 router.get('/afficher/:id', function(req, res, next) {
- var coor = models.comment.find({"family":req.params.id}, function(err, p){
+ var coor = models.comment.find({"userFK":req.params.id}, function(err, p){
         if(err){
             res.json({error: err});
         }else{
@@ -29,7 +29,7 @@ res.render('map.twig',{hi:hi, user:req.user});
 
 router.post('/addmap', function(req, res, next) {
  
-  var c = new models.comment({attitude:req.body.mylat,longitude:req.body.mylong,date:req.body.date,name:req.body.name,family:req.body.family,userFK:req.body.userFK});
+  var c = new models.comment({role:req.body.role,attitude:req.body.mylat,longitude:req.body.mylong,date:req.body.date,name:req.body.name,family:req.body.family,userFK:req.body.userFK});
     c.save(function(err,c){
     if(err) req.json({error:err});
         res.json(c);
