@@ -28,7 +28,7 @@ router.post('/', function(req, res, next) {
     var f = new models.food();
     f.title = req.body.title;
     f.contenue = req.body.contenue;
-   
+    f.userId=req.body.userId; 
     //f.message.push(req.body.message[0]);
     
 
@@ -53,7 +53,7 @@ router.put('/:id/:msg', function(req, res, next) {
         if(err){
             res.json({error: err});
         }else{
-            
+             
             p.message.push(hh);
             p.save();
             res.json(p);
@@ -77,7 +77,7 @@ router.put('/update/:id/:id2/:note', function(req, res, next) {
             // look for the entry with a matching `code` value
             if (food[0].message[i]._id == req.params.id2){
               food[0].message[i].vote=(parseInt(food[0].message[i].vote)) ?  parseInt(food[0].message[i].vote)+1:1;
-              
+             
               //food.save();
               res.send(food);
             }
