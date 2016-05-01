@@ -65,7 +65,7 @@ router.put('/:id/:msg', function(req, res, next) {
      
 });
 
-router.put('/update/:id/:msg', function(req, res, next) {
+router.put('/update/:id/:note', function(req, res, next) {
    
     models.food.update({_id:req.params.id}, {$set: {"message.1":{vote: req.params.note}}}, {new: true}, function(err, food){
         if(err){
