@@ -81,6 +81,7 @@ router.put('/update/:id/:id2/:note', function(req, res, next) {
               res.send(food);
             }
           }
+          food[0].save();
             res.send(food[0].message.length);
         }
     });
