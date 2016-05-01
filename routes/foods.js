@@ -76,7 +76,9 @@ router.put('/update/:id/:id2/:note', function(req, res, next) {
           {
             // look for the entry with a matching `code` value
             if (food[0].message[i]._id == req.params.id2){
-              res.send(food[0].message[i]);
+              food[0].message[i].vote=req.params.note;
+              
+              res.send(food);
             }
           }
             res.send(food[0].message.length);
