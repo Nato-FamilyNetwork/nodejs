@@ -72,7 +72,7 @@ router.put('/update/:id/:id2/:note', function(req, res, next) {
         if(err){
             res.send({error: err});
         }else{
-            res.send(food[0].contenue);
+            res.send(food[0].message);
         }
     });
 });
