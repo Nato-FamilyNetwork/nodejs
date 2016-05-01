@@ -44,8 +44,8 @@ router.post('/', function(req, res, next) {
         }
     });
 });
-router.put('/:id/:msg', function(req, res, next) {
-    var hh= {"nom":req.params.msg};
+router.put('/:id/:msg/:z', function(req, res, next) {
+    var hh= {"nom":req.params.msg,"users":req.params.z};
      
     
     models.food.find({"title":{$regex: ".*"+req.params.id+".*", $options:"i"}}).exec(function(err,ts){
