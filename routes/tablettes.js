@@ -60,18 +60,18 @@ request(url, function (error, response, body) {
  
       }
      
-       
+       models.tablette.find({}).exec(function(err,tablettes){
+    if(err) res.send('Error');
+    res.send(tablettes);
+    
+});
     
   } else {
     console.log("We’ve encountered an error: " + error);
   }
 });
   	
-models.tablette.find({}).exec(function(err,tablettes){
-    if(err) res.send('Error');
-    res.send(tablettes);
-    
-});
+
     });
 
 
