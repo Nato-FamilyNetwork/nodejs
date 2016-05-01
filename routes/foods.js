@@ -45,7 +45,7 @@ router.post('/', function(req, res, next) {
     });
 });
 router.put('/:id/:msg/:z', function(req, res, next) {
-     var me = new Date();
+     var date = new Date();
      var h =date.getHours()+1+"h";
      var m =date.getMinutes()+"min";
      
