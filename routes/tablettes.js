@@ -51,7 +51,7 @@ request(url, function (error, response, body) {
          var c = new models.tablette({
          	tablette:titles[ff], 
          	lien:links[ff],
-         	photo:imgs[ff], 
+          
          	prix:prices[ff], 
          	source:"tunisianet"
          	
@@ -66,23 +66,7 @@ request(url, function (error, response, body) {
     console.log("We’ve encountered an error: " + error);
   }
 });
- 
- 
-
-
-
-var options = {
-  host: 'localhost',
-  path: '/ressources/mytek-tablette.php'
-};
-    http.request(options).end();
-	var techPC = JSON.parse(fs.readFileSync('/wamp/www/ressources/rsltMytekTab.json', "utf-8"));
-	/*
-	for(var i=0; i< techPC.length; i++){
-		var c = new models.tablette({tablette:techPC[i].tablette, lien:techPC[i].lien,photo:techPC[i].photo, prix:techPC[i].prix,PC:techPC[i].PC, source:techPC[i].source, marque:techPC[i].marque});
-	c.save();
-	}*/
-	
+  	
 models.tablette.find({}).exec(function(err,tablettes){
     if(err) res.send('Error');
     res.send(tablettes);
