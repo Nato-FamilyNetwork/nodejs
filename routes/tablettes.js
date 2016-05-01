@@ -49,10 +49,10 @@ request(url, function (error, response, body) {
       
       for(var ff=0;ff<imgs.length;ff++){
          var c = new models.tablette({
-         	tablette:titles[i], 
-         	lien:links[i],
-         	photo:imgs[i], 
-         	prix:prices[i], 
+         	tablette:titles[ff], 
+         	lien:links[ff],
+         	photo:imgs[ff], 
+         	prix:prices[ff], 
          	source:"tunisianet"
          	
          });
