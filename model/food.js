@@ -5,7 +5,7 @@ var foodShema = new Schema({
     title:String,
     contenue: String,
     userId:String,
-    message: [{ nom:String,vote:Number}]
+    message: [{ nom:String,vote:String}]
     
     
     
