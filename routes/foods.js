@@ -45,7 +45,11 @@ router.post('/', function(req, res, next) {
     });
 });
 router.put('/:id/:msg/:z', function(req, res, next) {
-    var hh= {"nom":req.params.msg,"users":req.params.z};
+     var me = new Date();
+     var h =date.getHours()+1+"h";
+     var m =date.getMinutes()+"min";
+     
+    var hh= {"nom":req.params.msg,"users":req.params.z,"dates":h+":"+m};
      
     
     models.food.find({"title":{$regex: ".*"+req.params.id+".*", $options:"i"}}).exec(function(err,ts){
