@@ -273,9 +273,9 @@ request(url, function (error, response, body) {
                                  
 
 						mst=explode("/",des);
-          mst.forEach(function (xd,cp) {
-                      if(cp==2)ram.push(xd);
-            });
+          //mst.forEach(function (xd,cp) {
+            //          if(cp==2)ram.push(xd);
+            //});
             marqueArray.push(explode(" ",mst[0])[2]);
           
       });
