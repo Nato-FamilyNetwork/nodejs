@@ -84,37 +84,7 @@ router.get('/tounsya', function(req, res, next) {
     console.log("We’ve encountered an error: " + error);
   }
   
-   url = "http://www.leconomistemaghrebin.com/2016/04/29/tunisie-sinscrire-levolution-numerique/";
-   
-request(url, function (error, response, body) {
-  if (!error) {
-    var $ = cheerio.load(body),
-     allImages=$('[class="entry"]').text(),
-        img=new Array(),
-        akhbar= new Array(),
-        ;
-      
-      var allLinks=$('[class^="attachment-single"]');
-      
-      //recuperation de tout les liens
-     allLinks.each(function (i, allLink) {
-          img.push($(allLink).attr().src);
-          
-          
-      });
-       
-      var x ={text:$('[class="entry"]').text(), image:img[0]};
-      res.send(x);
-      
-      //console.log(allImages); 
-  } else {
-    console.log("We’ve encountered an error: " + error);
-  }
-     
- 
     
-});
-  
         for(var cp=0; cp<Links.length;cp++)
       {
         var c = new models.newsTounsya({image:allImages[cp], titre:Titles[cp],lien:Links[cp], date:Dates[cp],category:"politics" ,source:"Leconomistemaghrebin"});
@@ -207,7 +177,7 @@ request(url, function (error, response, body) {
         models.newsTounsya.find({}).exec(function(err,tunisnews)
     {
     if(err) res.send('Error');
-   // res.send(tunisnews);    
+   res.send(tunisnews);    
     });
 });
 	
