@@ -480,7 +480,7 @@ request(urlMytek, function (error, response, body) {
            diskDure=lawej(tnpc,"Disque Dur",",");
            cartGraphique=lawej(tnpc,"Carte graphique:",",");
            marque= (lawej(pc+"+"," Portable","+") != "") ? lawej(pc+"+","portable","+") : lawej(pc+"+"," portable","+");  
-           var c = new models.pc({marque:marque,PC:pc,ram:ram,photo:images[j],prix:arrayPrix[j],lien:arrayLien[j],source:"mytek"});
+           var c = new models.pc({marque:marque,PC:pc,ram:"4 GO",photo:images[j],prix:arrayPrix[j],lien:arrayLien[j],source:"mytek"});
           // console.log(arrayPrix[i]);
  
               
