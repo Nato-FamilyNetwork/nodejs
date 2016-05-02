@@ -490,16 +490,16 @@ request(urlMytek, function (error, response, body) {
         
       console.log("mytek ok");
        
-    
-  } else {
-    console.log("We’ve encountered an error: " + error);
-  }
-  models.pc.find({}).exec(function(err,tunisianetpc){
+      models.pc.find({}).exec(function(err,tunisianetpc){
     if(err) res.send('Error');
     res.send(tunisianetpc);
     //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
     
 });
+  } else {
+    console.log("We’ve encountered an error: " + error);
+  }
+
 });
   
     
