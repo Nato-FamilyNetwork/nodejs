@@ -319,6 +319,12 @@ request(url, function (error, response, body) {
 		var c = new models.pc({ram:ramArray[i],lien:arrayLien[i],photo:images[i], prix:arrayPrix[i],PC:techPC[i], source:"technopro",marque:marqueArray[i]});
 	c.save();
 	}
+	models.pc.find({}).exec(function(err,tunisianetpc){
+    if(err) res.send('Error');
+    res.send(tunisianetpc);
+    //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
+    
+});
     
 });
   /////////////////////techno pro okkkkk  
@@ -398,6 +404,12 @@ request(url, function (error, response, body) {
   } else {
     console.log("We’ve encountered an error: " + error);
   }
+  models.pc.find({}).exec(function(err,tunisianetpc){
+    if(err) res.send('Error');
+    res.send(tunisianetpc);
+    //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
+    
+});
 });
     /////tunisia net okkk
     
@@ -492,6 +504,12 @@ request(urlMytek, function (error, response, body) {
   } else {
     console.log("We’ve encountered an error: " + error);
   }
+  models.pc.find({}).exec(function(err,tunisianetpc){
+    if(err) res.send('Error');
+    res.send(tunisianetpc);
+    //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
+    
+});
 });
   
     
@@ -499,12 +517,7 @@ request(urlMytek, function (error, response, body) {
 	 
  
 	 
-models.pc.find({}).exec(function(err,tunisianetpc){
-    if(err) res.send('Error');
-    res.send(tunisianetpc);
-    //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
-    
-});
+
     });
 
 //search by ressource
