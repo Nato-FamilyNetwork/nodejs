@@ -83,6 +83,16 @@ router.put('/offline/:id/', function(req, res, next) {
 
 
 
+router.delete('/bye/:id', function(req, res, next) {
+    Account.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.json({error: err});
+        }else{
+            res.json({done: 1});
+        }
+    });
+});
+
 
 //mahdi
 router.get('/my/:param', function(req, res) {
