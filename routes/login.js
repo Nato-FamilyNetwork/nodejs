@@ -130,6 +130,20 @@ router.put('/add/:id/:fid/:role', function(req, res, next) {
     });
 });
 
+
+
+});
+
+
+
+router.put('/remove/:id/', function(req, res, next) {
+    Account.findByIdAndUpdate(req.params.id, {$set: {familyid: "" , role: ""}}, {new: true}, function(err, category){
+        if(err){
+            res.send({error: err});
+        }else{
+            res.send(category);
+        }
+    });
 });
 
 router.get('/logout', function(req, res){
