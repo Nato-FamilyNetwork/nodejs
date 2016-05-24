@@ -377,7 +377,13 @@ request(url, function (error, response, body) {
           images.push($(allImage).attr().src);
           
       });
-       
+       var tabhhh= new Array();
+      var houhou=$('[class="product_desc"]');
+      houhou.each(function(i,houla)
+      {
+       tabhhh.push($(houla).text()); 
+      });
+      
       //Recuperation et stockage des information dans un tableau 'x'
        allPcs.each(function (i, allPc) {
            
@@ -395,8 +401,8 @@ request(url, function (error, response, body) {
            ram= (ram == "NaNGo")? lawej(tnpc,"- Mémoire","-"): ram;
                cartGraphique=lawej(tnpc,"Carte graphique","-");
             
-           var c = new models.pc({marque:marque,PC:pc,ram:ram,photo:images[i],prix:arrayPrix[i],lien:arrayLien[i],source:"tunisianet"});
-//	c.save();
+           var c = new models.pc({marque:marque,PC:tabhhh[i],ram:ram,photo:images[i],prix:arrayPrix[i] ,source:"tunisianet"});
+	 c.save();
         });  
        console.log("ok tunisia net");
   } else {
