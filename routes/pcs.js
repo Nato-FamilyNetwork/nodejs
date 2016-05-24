@@ -542,11 +542,7 @@ request(urlMytek, function (error, response, body) {
 //search by ressource
 router.get('/:search', function(req, res, next) {
 
-aiml.parseFiles('helloworld.aiml', function(err, topics){
-  var engine = new aiml.AiEngine('Default', topics, {name: 'sdfsdf'});
-  var responce = engine.reply({name: 'Billy'}, req.params.search, function(err, responce){
-      console.log(responce); 
-      if(!responce){
+    
             
                models.pc.find({$text:{$search:req.params.search}},{score:{$meta:"textScore"}},{prix:1}).sort
         ({score:{$meta:"textScore"}}).exec(function(err,tunisianetpcs){
@@ -554,10 +550,9 @@ aiml.parseFiles('helloworld.aiml', function(err, topics){
             res.send(tunisianetpcs[0].prix+"on "+tunisianetpcs[0].source+" here is the link "+tunisianetpcs[0].lien );
         });
        }
-      else
-      res.send( responce );
-  });
-});
+     
+  
+ 
 });
 
 
