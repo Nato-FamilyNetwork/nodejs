@@ -542,7 +542,7 @@ request(urlMytek, function (error, response, body) {
 //search by ressource
 router.get('/:search', function(req, res, next) {
  
-    if( (models.pc.find({$text:{$search:req.params.search}})).count()>0){
+    if( (models.pc.find({$text:{$search:req.params.search}}).count()>0){
                  models.pc.find({$text:{$search:req.params.search}},{score:{$meta:"textScore"}},{prix:1}).sort
         ({score:{$meta:"textScore"}}).exec(function(err,tunisianetpcs){
              if(err) res.send('Error');
