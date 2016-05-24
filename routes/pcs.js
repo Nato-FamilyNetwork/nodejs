@@ -1,12 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var models =require('../model');
- var http = require('http');
+var pc1 = require('../DataMean/tunisianetPC');
+var http = require('http');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
- 
-
 function decodeHTMLEntities (str) {
      
       // strip script/html tags
@@ -246,7 +245,7 @@ function stristr(haystack,needle,bool)
       };
 
 router.get('/', function(req, res, next) {
-     
+    
     ////////Techno pro okkkkkk5
     
     url = "http://www.technopro-online.com/fr/75-prix-pc-portable-hp-dell-asus-lenovo-acer-Tunisie";
@@ -261,7 +260,6 @@ request(url, function (error, response, body) {
       var cp=0;
        var arrayPrix= new Array();
        var ramArray= new Array();
-       var psdp=new Array();
        var arrayLien= new Array();
        var marqueArray= new Array();
       var ktiba=String,separate_results=String,des=String,marque=String,mst=String;
@@ -281,14 +279,6 @@ request(url, function (error, response, body) {
             marqueArray.push(explode(" ",mst[0])[2]);
           
       });
-      
-      var dd=$('[class="description"]');
-      
-      dd.each(function(i,pp)
-              {
-          psdp.push($(pp).text());
-              });
-      
       
       var prix=$('[class="price"]');//tout les prix
     
@@ -325,17 +315,17 @@ request(url, function (error, response, body) {
   } else {
     console.log("We’ve encountered an error: " + error);
   }
-    for(var i=0; i< techPC.length; i++){
-		//var c = new models({ram:ramArray[i],lien:arrayLien[i],photo:images[i], prix:arrayPrix[i],PC:psdp[i], source:"technopro",marque:marqueArray[i]});
-	//c.save();
-	}
+ //   for(var i=0; i< techPC.length; i++){
+//		var c = new models.pc({ram:ramArray[i],lien:arrayLien[i],photo:images[i], prix:arrayPrix[i],PC:techPC[i], source:"technopro",marque:marqueArray[i]});
+//	c.save();
+//	}
  
     
 });
   /////////////////////techno pro okkkkk  
     
     
-     
+    
     //////tunisia net okkkk
 	  
  url = "http://www.tunisianet.com.tn/301-ordinateur-portable";
@@ -384,13 +374,7 @@ request(url, function (error, response, body) {
           images.push($(allImage).attr().src);
           
       });
-       var tabhhh= new Array();
-      var houhou=$('[class="product_desc"]');
-      houhou.each(function(i,houla)
-      {
-       tabhhh.push($(houla).text()); 
-      });
-      
+       
       //Recuperation et stockage des information dans un tableau 'x'
        allPcs.each(function (i, allPc) {
            
@@ -408,8 +392,8 @@ request(url, function (error, response, body) {
            ram= (ram == "NaNGo")? lawej(tnpc,"- Mémoire","-"): ram;
                cartGraphique=lawej(tnpc,"Carte graphique","-");
             
-           var c = new models.pc({marque:marque,PC:tabhhh[i],ram:ram,photo:images[i],prix:arrayPrix[i] ,source:"tunisianet"});
-	 c.save();
+           var c = new models.pc({marque:marque,PC:pc,ram:ram,photo:images[i],prix:arrayPrix[i],lien:arrayLien[i],source:"tunisianet"});
+//	c.save();
         });  
        console.log("ok tunisia net");
   } else {
@@ -418,7 +402,8 @@ request(url, function (error, response, body) {
   
 });
     /////tunisia net okkk
-     
+    
+    
    
  urlMytek ="http://www.mytek.tn/13-pc-portables-tunisie?id_category=13&n=114";
 request(urlMytek, function (error, response, body) {
@@ -433,7 +418,7 @@ request(urlMytek, function (error, response, body) {
       
       desvariable.forEach(function (variable,compteur) {
                 unektiba=lawej(variable,"itemprop=\"description\">","</p>");
-								//console.log(parseInt(decodeHTMLEntities(lawej(unektiba,"RAM",","))));
+								console.log(parseInt(decodeHTMLEntities(lawej(unektiba,"RAM",","))));
       });
       
       var json = { title : "", release : "", rating : ""};
@@ -441,8 +426,6 @@ request(urlMytek, function (error, response, body) {
        var allLinks=$('[class="product_img_link"]');
         var arrayPrix= new Array();
        var arrayLien= new Array();
-       var tablTex= new Array();
-       var tablRam= new Array();
       
       //recuperation de tout les liens
      allLinks.each(function (j, allLink) {
@@ -458,26 +441,8 @@ request(urlMytek, function (error, response, body) {
          arrayPrix.push($(pr).text());
           
       });
+       
       
-      var xx=$('[itemtype="http://schema.org/Product"]')
-      var ff=false; 
-      xx.each(function (j, pr) {
-           
-           if(lawej(substr($(pr).text(),0,$(pr).text().length-18),'Mémoire RAM',','))
-           {
-                tablRam.push(lawej(substr($(pr).text(),0,$(pr).text().length-18),'Mémoire RAM:',','));
-               ff=true;
-           }else{
-               tablRam.push(lawej(substr($(pr).text(),0,$(pr).text().length-18),'Mémoire:',','));
-               ff=true;
-           }
-          
-          tablTex.push(substr($(pr).text(),0,$(pr).text().length-18));
-      });
-       for(var xc=0;xc<tablTex.length;xc++)
-           console.log(tablTex[xc]);
-      
-     
       
       //console.log($('[class="price"]').children());
       var xx= new Array();
@@ -515,11 +480,11 @@ request(urlMytek, function (error, response, body) {
            diskDure=lawej(tnpc,"Disque Dur",",");
            cartGraphique=lawej(tnpc,"Carte graphique:",",");
            marque= (lawej(pc+"+"," Portable","+") != "") ? lawej(pc+"+","portable","+") : lawej(pc+"+"," portable","+");  
-           var c = new models.pc({marque:marque,PC:tablTex[j],ram:tablRam[j],photo:images[j],prix:arrayPrix[j],lien:arrayLien[j],source:"mytek"});
+           var c = new models.pc({marque:marque,PC:pc,ram:"4 GO",photo:images[j],prix:arrayPrix[j],lien:arrayLien[j],source:"mytek"});
           // console.log(arrayPrix[i]);
  
               
-	 if(arrayPrix[j]!=undefined)c.save();
+	//if(arrayPrix[j]!=undefined)c.save();
            
         });  
         
@@ -532,65 +497,26 @@ request(urlMytek, function (error, response, body) {
 
 });
   
-     
+    
 	  
 	 
-  /*models.pc.find({}).exec(function(err,tunisianetpc){
+  models.pc.find({}).exec(function(err,tunisianetpc){
     if(err) res.send('Error');
     res.send(tunisianetpc);
     //res.render('pcs.twig', { title: 'List des pcs',tunisianetpcs:tunisianetpc, user:req.user });
     
-});*/
+});
 	 
 
     });
 
 //search by ressource
- router.get('/:search', function(req, res, next) {
- 
+router.get('/:search', function(req, res, next) {
 
-    /* 
-       aiml.parseFiles('helloworld.aiml', function(err, topics){
-  var engine = new aiml.AiEngine('Default', topics, {name: 'sdfsdf'});
-  var responce = engine.reply({name: 'Billy'}, req.params.search, function(err, responce){
-      console.log(responce); 
-      if(!responce){
-            
-               models.pc.find({$text:{$search:req.params.search}},{score:{$meta:"textScore"}},{prix:1}).sort
-        ({score:{$meta:"textScore"}}).exec(function(err,tunisianetpcs){
-             if(err) res.send('Error');
-            res.send(tunisianetpcs[0].prix+"on "+tunisianetpcs[0].source+" here is the link "+tunisianetpcs[0].lien );
-        });
-       }
-      else
-      res.send( responce );
-  });
-}); */
-/*
-models.pc.find().exec(function(err,tunisianetpcs){
-       xw = new XMLWriter(true);
-	xw.startDocument();
-	xw.startElement('aiml');
-          	xw.writeAttribute('version', '1.0');
-       for(var xxx=0;xxx<tunisianetpcs.length;xxx++)
-         {
-         xw.startElement('category');
-         xw.startElement('pattern');
-         xw.text(decodeHTMLEntities(tunisianetpcs[xxx].PC).replace(/[.*+?^${}()|[\]\\]/g,''));
-         xw.endElement();     
-         xw.startElement('template');
-         xw.text(tunisianetpcs[xxx].prix+"on "+tunisianetpcs[xxx].source);
-             xw.endElement(); 
-             xw.endElement(); 
-         }
-          xw.endDocument();
-          console.log(xw.toString());
-            fs.writeFile('helloworld.aiml', xw.toString(), function (err) {
-      if (err) return console.log(err);
-      console.log('donnnnne');
-    });
-      });
-     */
+models.pc.find({"source":req.params.search}).exec(function(err,tunisianetpcs){
+     if(err) res.send('Error');
+     res.json(tunisianetpcs);
+});
 });
 
 
