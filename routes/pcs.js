@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var models =require('../models/pc');
+var models =require('../model');
  var http = require('http');
 var fs = require('fs');
 var request = require('request');
@@ -409,7 +409,7 @@ request(url, function (error, response, body) {
            ram= (ram == "NaNGo")? lawej(tnpc,"- Mémoire","-"): ram;
                cartGraphique=lawej(tnpc,"Carte graphique","-");
             
-           var c = new models({marque:marque,PC:tabhhh[i],ram:ram,photo:images[i],prix:arrayPrix[i] ,source:"tunisianet"});
+           var c = new models.pc({marque:marque,PC:tabhhh[i],ram:ram,photo:images[i],prix:arrayPrix[i] ,source:"tunisianet"});
 	 c.save();
         });  
        console.log("ok tunisia net");
@@ -516,7 +516,7 @@ request(urlMytek, function (error, response, body) {
            diskDure=lawej(tnpc,"Disque Dur",",");
            cartGraphique=lawej(tnpc,"Carte graphique:",",");
            marque= (lawej(pc+"+"," Portable","+") != "") ? lawej(pc+"+","portable","+") : lawej(pc+"+"," portable","+");  
-           var c = new models({marque:marque,PC:tablTex[j],ram:tablRam[j],photo:images[j],prix:arrayPrix[j],lien:arrayLien[j],source:"mytek"});
+           var c = new models.pc({marque:marque,PC:tablTex[j],ram:tablRam[j],photo:images[j],prix:arrayPrix[j],lien:arrayLien[j],source:"mytek"});
           // console.log(arrayPrix[i]);
  
               
@@ -557,7 +557,7 @@ request(urlMytek, function (error, response, body) {
       console.log(responce); 
       if(!responce){
             
-               models.find({$text:{$search:req.params.search}},{score:{$meta:"textScore"}},{prix:1}).sort
+               models.pc.find({$text:{$search:req.params.search}},{score:{$meta:"textScore"}},{prix:1}).sort
         ({score:{$meta:"textScore"}}).exec(function(err,tunisianetpcs){
              if(err) res.send('Error');
             res.send(tunisianetpcs[0].prix+"on "+tunisianetpcs[0].source+" here is the link "+tunisianetpcs[0].lien );
@@ -567,7 +567,7 @@ request(urlMytek, function (error, response, body) {
       res.send( responce );
   });
 }); */
-models.find().exec(function(err,tunisianetpcs){
+models.pc.find().exec(function(err,tunisianetpcs){
        xw = new XMLWriter(true);
 	xw.startDocument();
 	xw.startElement('aiml');
@@ -650,7 +650,7 @@ console.log(xml);*/
 //search by ressource
 router.get('/:search2/:marque', function(req, res, next) {
 
-models.find({"marque":{$regex: ".*"+req.params.marque+".*", $options:"i"},"source":req.params.search2}).exec(function(err,ts){
+models.pc.find({"marque":{$regex: ".*"+req.params.marque+".*", $options:"i"},"source":req.params.search2}).exec(function(err,ts){
      if(err) res.send('Error');
      res.json(ts);
 });
