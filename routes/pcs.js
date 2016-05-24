@@ -542,29 +542,22 @@ request(urlMytek, function (error, response, body) {
 //search by ressource
 router.get('/:search', function(req, res, next) {
 
-models.pc.find().exec(function(err,tunisianetpcs){
-       xw = new XMLWriter(true);
-	xw.startDocument();
-	xw.startElement('aiml');
-          	xw.writeAttribute('version', '1.0');
-       for(var xxx=0;xxx<tunisianetpcs.length;xxx++)
-         {
-         xw.startElement('category');
-         xw.startElement('pattern');
-         xw.text(decodeHTMLEntities(tunisianetpcs[xxx].PC).replace(/[.*+?^${}()|[\]\\]/g,''));
-         xw.endElement();     
-         xw.startElement('template');
-         xw.text(tunisianetpcs[xxx].prix+"on "+tunisianetpcs[xxx].source);
-             xw.endElement(); 
-             xw.endElement(); 
-         }
-          xw.endDocument();
-          console.log(xw.toString());
-            fs.writeFile('helloworld.aiml', xw.toString(), function (err) {
-      if (err) return console.log(err);
-      console.log('donnnnne');
-    });
-      });
+aiml.parseFiles('helloworld.aiml', function(err, topics){
+  var engine = new aiml.AiEngine('Default', topics, {name: 'sdfsdf'});
+  var responce = engine.reply({name: 'Billy'}, req.params.search, function(err, responce){
+      console.log(responce); 
+      if(!responce){
+            
+               models.pc.find({$text:{$search:req.params.search}},{score:{$meta:"textScore"}},{prix:1}).sort
+        ({score:{$meta:"textScore"}}).exec(function(err,tunisianetpcs){
+             if(err) res.send('Error');
+            res.send(tunisianetpcs[0].prix+"on "+tunisianetpcs[0].source+" here is the link "+tunisianetpcs[0].lien );
+        });
+       }
+      else
+      res.send( responce );
+  });
+});
 });
 
 
