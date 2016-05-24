@@ -541,14 +541,16 @@ request(urlMytek, function (error, response, body) {
 
 //search by ressource
 router.get('/:search', function(req, res, next) {
-
-    
+ 
+    if( models.pc.find({$text:{$search:req.params.search}})){
                  models.pc.find({$text:{$search:req.params.search}},{score:{$meta:"textScore"}},{prix:1}).sort
         ({score:{$meta:"textScore"}}).exec(function(err,tunisianetpcs){
              if(err) res.send('Error');
             res.send(tunisianetpcs[0].prix+"on "+tunisianetpcs[0].source+" here is the link "+tunisianetpcs[0].lien );
         });
-        
+    }
+        else
+         res.send("no item found please enter a correct request");
      
   
  
