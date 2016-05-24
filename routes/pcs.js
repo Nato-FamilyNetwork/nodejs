@@ -427,7 +427,7 @@ request(urlMytek, function (error, response, body) {
       
       desvariable.forEach(function (variable,compteur) {
                 unektiba=lawej(variable,"itemprop=\"description\">","</p>");
-								console.log(parseInt(decodeHTMLEntities(lawej(unektiba,"RAM",","))));
+								//console.log(parseInt(decodeHTMLEntities(lawej(unektiba,"RAM",","))));
       });
       
       var json = { title : "", release : "", rating : ""};
@@ -435,6 +435,8 @@ request(urlMytek, function (error, response, body) {
        var allLinks=$('[class="product_img_link"]');
         var arrayPrix= new Array();
        var arrayLien= new Array();
+       var tablTex= new Array();
+       var tablRam= new Array();
       
       //recuperation de tout les liens
      allLinks.each(function (j, allLink) {
@@ -450,8 +452,26 @@ request(urlMytek, function (error, response, body) {
          arrayPrix.push($(pr).text());
           
       });
-       
       
+      var xx=$('[itemtype="http://schema.org/Product"]')
+      var ff=false; 
+      xx.each(function (j, pr) {
+           
+           if(lawej(substr($(pr).text(),0,$(pr).text().length-18),'Mémoire RAM',','))
+           {
+                tablRam.push(lawej(substr($(pr).text(),0,$(pr).text().length-18),'Mémoire RAM:',','));
+               ff=true;
+           }else{
+               tablRam.push(lawej(substr($(pr).text(),0,$(pr).text().length-18),'Mémoire:',','));
+               ff=true;
+           }
+          
+          tablTex.push(substr($(pr).text(),0,$(pr).text().length-18));
+      });
+       for(var xc=0;xc<tablTex.length;xc++)
+           console.log(tablTex[xc]);
+      
+     
       
       //console.log($('[class="price"]').children());
       var xx= new Array();
@@ -489,11 +509,11 @@ request(urlMytek, function (error, response, body) {
            diskDure=lawej(tnpc,"Disque Dur",",");
            cartGraphique=lawej(tnpc,"Carte graphique:",",");
            marque= (lawej(pc+"+"," Portable","+") != "") ? lawej(pc+"+","portable","+") : lawej(pc+"+"," portable","+");  
-           var c = new models.pc({marque:marque,PC:pc,ram:"4 GO",photo:images[j],prix:arrayPrix[j],lien:arrayLien[j],source:"mytek"});
+           var c = new models.pc({marque:marque,PC:tablTex[j],ram:tablRam[j],photo:images[j],prix:arrayPrix[j],lien:arrayLien[j],source:"mytek"});
           // console.log(arrayPrix[i]);
  
               
-	//if(arrayPrix[j]!=undefined)c.save();
+	 if(arrayPrix[j]!=undefined)c.save();
            
         });  
         
@@ -505,7 +525,7 @@ request(urlMytek, function (error, response, body) {
   }
 
 });
-  
+   
     
 	  
 	 
