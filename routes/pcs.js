@@ -327,7 +327,7 @@ request(url, function (error, response, body) {
     console.log("We’ve encountered an error: " + error);
   }
     for(var i=0; i< techPC.length; i++){
-		var c = new models({ram:ramArray[i],lien:arrayLien[i],photo:images[i], prix:arrayPrix[i],PC:psdp[i], source:"technopro",marque:marqueArray[i]});
+		//var c = new models({ram:ramArray[i],lien:arrayLien[i],photo:images[i], prix:arrayPrix[i],PC:psdp[i], source:"technopro",marque:marqueArray[i]});
 	//c.save();
 	}
  
