@@ -550,7 +550,7 @@ request(urlMytek, function (error, response, body) {
  router.get('/:search', function(req, res, next) {
  
 
-     
+    /* 
        aiml.parseFiles('helloworld.aiml', function(err, topics){
   var engine = new aiml.AiEngine('Default', topics, {name: 'sdfsdf'});
   var responce = engine.reply({name: 'Billy'}, req.params.search, function(err, responce){
@@ -566,7 +566,7 @@ request(urlMytek, function (error, response, body) {
       else
       res.send( responce );
   });
-}); /*
+}); */
 models.find().exec(function(err,tunisianetpcs){
        xw = new XMLWriter(true);
 	xw.startDocument();
@@ -590,7 +590,7 @@ models.find().exec(function(err,tunisianetpcs){
       console.log('donnnnne');
     });
       });
-    */
+    
 	
      
 	
