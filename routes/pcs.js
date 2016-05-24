@@ -5,8 +5,7 @@ var models =require('../model');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
-var aiml = require('aiml');
-var XMLWriter = require('xml-writer');
+ 
 
 function decodeHTMLEntities (str) {
      
@@ -567,6 +566,7 @@ request(urlMytek, function (error, response, body) {
       res.send( responce );
   });
 }); */
+/*
 models.pc.find().exec(function(err,tunisianetpcs){
        xw = new XMLWriter(true);
 	xw.startDocument();
@@ -590,60 +590,7 @@ models.pc.find().exec(function(err,tunisianetpcs){
       console.log('donnnnne');
     });
       });
-    
-	
-     
-	
-      /*
-     models.find().exec(function(err,tunisianetpcs){
-          var example5 = [ {
-                     
-                } 
-               ];
-         for(var xxx=0;xxx<tunisianetpcs.length;xxx++)
-         {
-            example5.push({ category: [ { pattern: tunisianetpcs[xxx].source+xxx },
-                                     { template: tunisianetpcs[xxx].prix } 
-                                   ] 
-                            });
-         }
-         
-         var example6 = [ {
-                    aiml: [ { _attr: { version: '1.0'} }, 
-                          example5    
-                             
-                          ] 
-                } 
-               ];
-         
-         
-         
-          fs.writeFile('helloworld.aiml', xml({aiml:example5}, { declaration: true }), function (err) {
-      if (err) return console.log(err);
-      console.log('donnnnne');
-    });
-
-    });*/
-    /*
-var example5 = [ {
-                    aiml: [ { _attr: { version: '1.0'} }, 
-                              
-                            { category: [ { pattern: 'hello' },
-                                     { template: 'ena' } 
-                                   ] 
-                            } 
-                          ] 
-                } 
-               ];
-//console.log(xml(example5));
-
-     
-     
-     fs.writeFile('helloworld.aiml', xml(example5), function (err) {
-      if (err) return console.log(err);
-      console.log('Hello World > helloworld.txt');
-    });
-console.log(xml);*/
+     */
 });
 
 
