@@ -6,6 +6,9 @@ var http = require('http');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
+var aiml = require('aiml');
+var XMLWriter = require('xml-writer');
+
 function decodeHTMLEntities (str) {
      
       // strip script/html tags
