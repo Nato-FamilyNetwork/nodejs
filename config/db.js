@@ -1,3 +1,3 @@
 var mongoose = require ( 'mongoose' );
-mongoose.connect ( 'mongodb://nato:natoforthewin@ds015919.mlab.com:15919/familynetwork' );
+mongoose.connect ( 'mongodb://newnato:familynetworknato@ds015919.mlab.com:15919/familynetwork' );
 module.exports = mongoose;
