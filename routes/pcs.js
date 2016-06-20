@@ -318,10 +318,10 @@ request(url, function (error, response, body) {
   } else {
     console.log("We’ve encountered an error: " + error);
   }
- //   for(var i=0; i< techPC.length; i++){
-//		var c = new models.pc({ram:ramArray[i],lien:arrayLien[i],photo:images[i], prix:arrayPrix[i],PC:techPC[i], source:"technopro",marque:marqueArray[i]});
-//	c.save();
-//	}
+/   for(var i=0; i< techPC.length; i++){
+		var c = new models.pc({ram:ramArray[i],lien:arrayLien[i],photo:images[i], prix:arrayPrix[i],PC:techPC[i], source:"technopro",marque:marqueArray[i]});
+	c.save();
+	}
  
     
 });
@@ -402,7 +402,7 @@ request(url, function (error, response, body) {
                cartGraphique=lawej(tnpc,"Carte graphique","-");
             
            var c = new models.pc({marque:marque,PC:tabhhh[i],ram:ram,photo:images[i],prix:arrayPrix[i] ,source:"tunisianet"});
-	 //c.save();
+	 c.save();
         });  
        console.log("ok tunisia net");
   } else {
@@ -513,7 +513,7 @@ request(urlMytek, function (error, response, body) {
           // console.log(arrayPrix[i]);
  
               
-	 //if(arrayPrix[j]!=undefined)c.save();
+if(arrayPrix[j]!=undefined)c.save();
            
         });  
         
