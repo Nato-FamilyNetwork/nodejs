@@ -252,7 +252,7 @@ router.get('/', function(req, res, next) {
     ////////Techno pro okkkkkk5
     
     url = "http://www.technopro-online.com/fr/75-prix-pc-portable-hp-dell-asus-lenovo-acer-Tunisie";
-   
+  /* 
 request(url, function (error, response, body) {
   if (!error) {
     var $ = cheerio.load(body),
@@ -318,13 +318,13 @@ request(url, function (error, response, body) {
   } else {
     console.log("We’ve encountered an error: " + error);
   }
-   for(var i=0; i< techPC.length; i++){
-		var c = new models.pc({ram:ramArray[i],lien:arrayLien[i],photo:images[i], prix:arrayPrix[i],PC:techPC[i], source:"technopro",marque:marqueArray[i]});
-	c.save();
-	}
+   //for(var i=0; i< techPC.length; i++){
+//		var c = new models.pc({ram:ramArray[i],lien:arrayLien[i],photo:images[i], prix:arrayPrix[i],PC:techPC[i], source:"technopro",marque:marqueArray[i]});
+//	c.save();
+//	}
  
     
-});
+});*/
   /////////////////////techno pro okkkkk  
     
     
@@ -333,7 +333,7 @@ request(url, function (error, response, body) {
 	  
  url = "http://www.tunisianet.com.tn/301-ordinateur-portable";
   //tunisianet portable
-request(url, function (error, response, body) {
+/*request(url, function (error, response, body) {
   if (!error) {
     var $ = cheerio.load(body),
       allPcs = $("[id=\"produit_liste_texte\"]").children(),i=0,j=0;
@@ -409,13 +409,13 @@ request(url, function (error, response, body) {
     console.log("We’ve encountered an error: " + error);
   }
   
-});
+});*/
     /////tunisia net okkk
     
     
    
  urlMytek ="http://www.mytek.tn/13-pc-portables-tunisie?id_category=13&n=114";
-request(urlMytek, function (error, response, body) {
+/*request(urlMytek, function (error, response, body) {
   if (!error) {
     var $ = cheerio.load(body),
       allPcs = $("[class=\"product-container\"]").children(),i=0,j=0;
@@ -524,7 +524,7 @@ if(arrayPrix[j]!=undefined)c.save();
     console.log("We’ve encountered an error: " + error);
   }
 
-});
+});*/
    
     
 	  
