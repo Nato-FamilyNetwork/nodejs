@@ -318,7 +318,7 @@ request(url, function (error, response, body) {
   } else {
     console.log("We’ve encountered an error: " + error);
   }
-/   for(var i=0; i< techPC.length; i++){
+   for(var i=0; i< techPC.length; i++){
 		var c = new models.pc({ram:ramArray[i],lien:arrayLien[i],photo:images[i], prix:arrayPrix[i],PC:techPC[i], source:"technopro",marque:marqueArray[i]});
 	c.save();
 	}
