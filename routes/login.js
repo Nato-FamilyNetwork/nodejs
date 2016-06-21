@@ -94,6 +94,18 @@ router.delete('/bye/:id', function(req, res, next) {
 });
 
 
+//mouch mahdi
+
+router.get('/searchme/:param', function(req, res) {
+    
+    model.user.find({"username":req.params.param}).exec(function(err,resu){
+		
+		if(err) res.send(404,err);
+		res.send(resu);
+		
+	});
+});
+
 //mahdi
 router.get('/my/:param', function(req, res) {
     
