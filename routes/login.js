@@ -58,6 +58,15 @@ router.get('/all/online', function(req, res) {
 	});
 });
 
+router.get('/family/online/:param', function(req, res) {
+    
+    model.user.find({"online":"true","familyid":req.params.param}).exec(function(err,resu){
+		
+		if(err) res.send(404,err);
+		res.send(resu);
+		
+	});
+});
 
 
 
