@@ -15,7 +15,7 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var InstagramStrategy = require('passport-instagram').Strategy;
 var request = require('request');
-//var socket_io = require('socket.io');
+var socket_io = require('socket.io');
 
 
 
