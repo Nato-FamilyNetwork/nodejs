@@ -137,7 +137,7 @@ router.get('/testing', function(req, res) {
 	});
 });
 
-
+/*
 io.sockets.on('connection', function (socket) {
 
 router.put('/add/:id/:fid/:role', function(req, res, next) {
@@ -153,7 +153,7 @@ router.put('/add/:id/:fid/:role', function(req, res, next) {
 
 
 
-});
+});*/
 
 
 
