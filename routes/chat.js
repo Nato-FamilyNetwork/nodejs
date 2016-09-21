@@ -1,5 +1,5 @@
 
-/*module.exports = function(io) {
+module.exports = function(io) {
 
  var express = require('express');
  var router = express.Router();
@@ -46,4 +46,4 @@ for(var k in users){
 
  return router;
 };
-*/
+
