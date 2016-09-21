@@ -1,3 +1,4 @@
+module.exports = function(io) {
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
@@ -174,3 +175,4 @@ router.get('/logout', function(req, res){
 
 return router;
 
+};
