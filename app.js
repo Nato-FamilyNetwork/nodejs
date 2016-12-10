@@ -81,7 +81,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 function isAuthenticated(req, res, next) {
      
-    if ((req.user != undefined) && (req.user.online))
+    if (req.isAuthenticated())
         return next();
 
     res.redirect('/');
@@ -111,7 +111,7 @@ app.use('/foods', food);
 app.use('/todo', todo);
 app.use('/chat', require('./routes/chat')(io));
 app.use('/schedule', require('./routes/scheduale'));
-app.use('/pcs', pcs);
+app.use('/pcs',isAuthenticated, pcs);
 app.use('/tablettes', tablettes);
 app.use('/tvs', tvs);
 app.use('/imprimantes', imprimantes);
