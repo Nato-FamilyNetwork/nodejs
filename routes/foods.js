@@ -52,7 +52,7 @@ router.put('/:id/:msg/:z', function(req, res, next) {
     var hh= {"nom":req.params.msg,"users":req.params.z,"dates":h+":"+m};
      
     
-    models.food.find({"title":{$regex: ".*"+req.params.id+".*", $options:"i"}}).exec(function(err,ts){
+    models.food.find({"title":{"_id":req.params.id}}).exec(function(err,ts){
      if(err) res.send('Error');
     var idddddd=(ts[0]._id);
          models.food.findById(idddddd, function(err, p){
