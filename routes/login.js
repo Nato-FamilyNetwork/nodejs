@@ -34,9 +34,9 @@ router.put('/update/:id/:league/:team', function(req, res, next) {
 });
 //radio
 router.put('/update/radio/:id/:radio', function(req, res, next) {
-    Account.findByIdAndUpdate(req.params.id, {$set: {radio:[]}}, {new: true}, function(err, category){
+    Account.findByIdAndUpdate(req.params.id, {$set: {radio:[]}}, function(err, category){
         if(err){
-             Account.findByIdAndUpdate(req.params.id, {$addToSet: {radio:[req.params.radio]}}, {new: true});
+             Account.findByIdAndUpdate(req.params.id, {$addToSet: {radio:[req.params.radio]}});
         }else{
             res.send(category);
         }
