@@ -33,7 +33,7 @@ router.put('/update/:id/:league/:team', function(req, res, next) {
     });
 });
 //radio
-router.put('/update/radio/:id/:radio', function(req, res, next) {
+router.put('/mlk/mlk/mlk/radio/:id/:radio', function(req, res, next) {
     Account.findByIdAndUpdate(req.params.id, {$set: {tel:111}}, {new: true}, function(err, category){
         if(err){
              res.send({error: err});
