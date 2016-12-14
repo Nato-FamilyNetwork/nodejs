@@ -21,7 +21,7 @@ router.get('/tounsya', function(req, res, next) {
        var Dates=new Array();
       
         
-      ($('[class="entry-title"]').children()).each(function (i, allPc) {
+      ($('[rel="bookmark]').children()).each(function (i, allPc) {	      
       Titles.push($(allPc).text());
       });
       
@@ -45,7 +45,7 @@ router.get('/tounsya', function(req, res, next) {
         for(var cp=0; cp<Links.length;cp++)
       {
         var c = new models.newsTounsya({image:allImages[cp], titre:Titles[cp],lien:Links[cp], date:Dates[cp],category:"world",source:"Leconomistemaghrebin"});
-	//c.save();
+	c.save();
       }
 });
 	 
@@ -62,7 +62,7 @@ router.get('/tounsya', function(req, res, next) {
        var Dates=new Array();
       
          
-      ($('[class="entry-title"]').children()).each(function (i, allPc) {
+      ($('[rel="bookmark"]').children()).each(function (i, allPc) {
       Titles.push($(allPc).text());
       });
       
@@ -88,7 +88,7 @@ router.get('/tounsya', function(req, res, next) {
         for(var cp=0; cp<Links.length;cp++)
       {
         var c = new models.newsTounsya({image:allImages[cp], titre:Titles[cp],lien:Links[cp], date:Dates[cp],category:"politics" ,source:"Leconomistemaghrebin"});
-	//c.save();
+	c.save();
       }
 });
 	 
@@ -105,7 +105,7 @@ router.get('/tounsya', function(req, res, next) {
        var Dates=new Array();
       
          
-      ($('[class="entry-title"]').children()).each(function (i, allPc) {
+      ($('[rel="bookmark"]').children()).each(function (i, allPc) {
       Titles.push($(allPc).text());
       });
       
@@ -129,7 +129,7 @@ router.get('/tounsya', function(req, res, next) {
         for(var cp=0; cp<Links.length;cp++)
       {
         var c = new models.newsTounsya({image:allImages[cp], titre:Titles[cp],lien:Links[cp], date:Dates[cp],category:"tunisie",source:"Leconomistemaghrebin"});
-	//c.save();
+	c.save();
       }
 });
 	
@@ -146,7 +146,7 @@ router.get('/tounsya', function(req, res, next) {
        var Dates=new Array();
       
        
-      ($('[class="entry-title"]').children()).each(function (i, allPc) {
+      ($('[rel="bookmark"]').children()).each(function (i, allPc) {
       Titles.push($(allPc).text());
       });
       
@@ -170,7 +170,7 @@ router.get('/tounsya', function(req, res, next) {
         for(var cp=0; cp<Links.length;cp++)
       {
         var c = new models.newsTounsya({image:allImages[cp], titre:Titles[cp],lien:Links[cp], date:Dates[cp],category:"events", source:"Leconomistemaghrebin"});
-	//c.save();
+	c.save();
       }
         
         
