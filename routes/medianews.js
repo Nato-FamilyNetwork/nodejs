@@ -21,7 +21,7 @@ router.get('/tounsya', function(req, res, next) {
        var Dates=new Array();
       
         
-      ($('[rel="bookmark]').children()).each(function (i, allPc) {	      
+      ($('[class="entry entry-small"]').children()).each(function (i, allPc) {	      
       Titles.push($(allPc).text());
       });
       
@@ -62,7 +62,7 @@ router.get('/tounsya', function(req, res, next) {
        var Dates=new Array();
       
          
-      ($('[rel="bookmark"]').children()).each(function (i, allPc) {
+      ($('[class="entry entry-small"]').children()).each(function (i, allPc) {
       Titles.push($(allPc).text());
       });
       
@@ -105,7 +105,7 @@ router.get('/tounsya', function(req, res, next) {
        var Dates=new Array();
       
          
-      ($('[rel="bookmark"]').children()).each(function (i, allPc) {
+      ($('[class="entry entry-small"]').children()).each(function (i, allPc) {
       Titles.push($(allPc).text());
       });
       
@@ -146,7 +146,7 @@ router.get('/tounsya', function(req, res, next) {
        var Dates=new Array();
       
        
-      ($('[rel="bookmark"]').children()).each(function (i, allPc) {
+      ($('[class="entry entry-small"]').children()).each(function (i, allPc) {
       Titles.push($(allPc).text());
       });
       
