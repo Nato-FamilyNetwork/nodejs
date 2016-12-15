@@ -17,6 +17,7 @@ var users = new Schema({
 	role : String,
 	radio: [String],
 	news: [String],
+	images: [String],
 	online: String,
 	football : {
 		league : String,
