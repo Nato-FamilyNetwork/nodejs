@@ -42,6 +42,17 @@ router.put('/mlk/mlk/mlk/radio/:id/:radio', function(req, res, next) {
         }
     });
 });
+//image
+//radio
+router.put('/mlk/mlk/images/:id/:radio', function(req, res, next) {	                                     
+    Account.findByIdAndUpdate(req.params.id, {$addToSet: { images : { $each:[req.params.radio]}}}, {new: true}, function(err, category){
+        if(err){
+             res.send({error: err});
+        }else{
+            res.send(category);
+        }
+    });
+});
 
 
 
