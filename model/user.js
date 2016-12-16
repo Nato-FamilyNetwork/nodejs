@@ -12,6 +12,7 @@ var users = new Schema({
 	interest : String,
 	newspaper : String,
 	familyid : String,
+	avatar:String,
 	tel: Number,
 	admin : String,
 	role : String,
