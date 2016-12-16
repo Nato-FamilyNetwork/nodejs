@@ -53,14 +53,15 @@ router.put('/mlk/mlk/images/:id/:radio', function(req, res, next) {
     });
 });
 //profile image
-router.get('/user/image/profile/change/:param/:image', function(req, res) {
+router.get('/user/image/profile/change/:id/:image', function(req, res) {
     
-    model.user.find({"avatar":req.params.image,"name":req.params.param}).exec(function(err,resu){
-		
-		if(err) res.send(404,err);
-		res.send(resu);
-		
-	});
+    Account.findByIdAndUpdate(req.params.id, {$set: {avatar:req.params.image}}, {new: true}, function(err, category){
+        if(err){
+            res.send({error: err});
+        }else{
+            res.send(category);
+        }
+    });
 });	
 
 
