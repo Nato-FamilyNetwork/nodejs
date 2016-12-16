@@ -42,8 +42,7 @@ router.put('/mlk/mlk/mlk/radio/:id/:radio', function(req, res, next) {
         }
     });
 });
-//image
-//radio
+//images
 router.put('/mlk/mlk/images/:id/:radio', function(req, res, next) {	                                     
     Account.findByIdAndUpdate(req.params.id, {$addToSet: { images : { $each:[req.params.radio]}}}, {new: true}, function(err, category){
         if(err){
@@ -53,7 +52,16 @@ router.put('/mlk/mlk/images/:id/:radio', function(req, res, next) {
         }
     });
 });
-
+//profile image
+router.get('/user/image/profile/change/:param/:image', function(req, res) {
+    
+    model.user.find({"avatar":req.params.image,"name":req.params.param}).exec(function(err,resu){
+		
+		if(err) res.send(404,err);
+		res.send(resu);
+		
+	});
+});	
 
 
 //mahdi
