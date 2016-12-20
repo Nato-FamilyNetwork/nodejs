@@ -10,7 +10,7 @@ var model = require('../model/');
     res.render("login.twig" , { user : req.user, message : req.flash('error')});
 });
 
-router.post('/', passport.authenticate('local', { failureRedirect: '/register', failureFlash: true }), function(req, res, next) {
+router.post('/', passport.authenticate('local'), function(req, res, next) {
     req.session.save(function (err) {
         if (err) {
             return next(err);
